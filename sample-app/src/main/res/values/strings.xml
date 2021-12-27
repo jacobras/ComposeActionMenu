@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ComposeActionMenu</string>
+    <string name="regular_option">Regular option</string>
+    <string name="radio_group">Radio group</string>
+    <string name="person_1">Person #1</string>
+    <string name="person_2">Person #2</string>
+    <string name="person_3">Person #3</string>
+    <string name="contact_options">Contact options</string>
+    <string name="contact_1">Phone</string>
+    <string name="contact_2">E-mail</string>
+    <string name="contact_3">Post</string>
+    <string name="use_location">Use location</string>
+    <string name="settings">Settings</string>
+</resources>
