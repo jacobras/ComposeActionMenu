@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import nl.jacobras.composeactionmenu.sample.R
 
 @Composable
 internal fun OverflowActionItem(
