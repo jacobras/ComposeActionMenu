@@ -4,6 +4,8 @@ This library provides an easy-to-use action menu for Compose, since Compose does
 
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-ComposeActionMenu-green.svg?style=flat )]( https://android-arsenal.com/details/1/8261 )
 
+[![Android Weekly](https://androidweekly.net/issues/issue-499/badge)](https://androidweekly.net/issues/issue-499/)
+
 ## Features
 
 - Icons (optional);
