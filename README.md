@@ -23,7 +23,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-    implementation "com.github.jacobras:ComposeActionMenu:1.0.0"
+    implementation "com.github.jacobras:ComposeActionMenu:1.1.0"
 }
 ```
 
