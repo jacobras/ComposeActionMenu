@@ -27,6 +27,21 @@ dependencies {
 }
 ```
 
+## Compose version
+
+This library uses the Compose BOM (Bill of Materials). Each version depends on specific Compose dependencies.
+
+See the Android docs for information about the specific Compose library versions in each BOM: https://developer.android.com/jetpack/compose/bom/bom-mapping.
+
+<table>
+ <tr>
+  <td>Compose 1.1.0-rc01</td><td><img alt="JitPack" src="https://img.shields.io/jitpack/version/com.github.jacobras/composeactionmenu.svg?versionPrefix=1.0.0"></td>
+ </tr>
+ <tr>
+  <td>Compose 2023.01.00</td><td><img alt="JitPack" src="https://img.shields.io/jitpack/version/com.github.jacobras/composeactionmenu.svg?versionPrefix=1.1.0"></td>
+ </tr>
+</table>
+
 # Usage
 
 ```kotlin
