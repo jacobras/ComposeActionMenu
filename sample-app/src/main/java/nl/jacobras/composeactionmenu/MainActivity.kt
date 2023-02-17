@@ -43,7 +43,9 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
+                    Column(modifier = Modifier
+                        .padding(it)
+                        .padding(16.dp)) {
                         Text("Welcome to the sample app! Try out the menu options above.")
                         Spacer(modifier = Modifier.height(8.dp))
                         Text("Use location (just some example text): ${useLocation.value}")

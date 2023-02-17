@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     buildFeatures {
         compose true
@@ -20,12 +20,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     composeOptions {
-        kotlinCompilerExtensionVersion "1.1.0-rc02"
+        kotlinCompilerExtensionVersion composeCompilerVersion
     }
     defaultConfig {
         applicationId "nl.jacobras.composeactionmenu"
         minSdk 21
-        targetSdk 31
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -37,7 +37,12 @@ android {
 }
 
 dependencies {
+    // BoMs
+    implementation platform(deps.composeBom)
+
+    // The actual library
     implementation project(':compose-action-menu')
+
     implementation deps.composeActivity
     implementation deps.composeCompiler
     implementation deps.composeMaterial
