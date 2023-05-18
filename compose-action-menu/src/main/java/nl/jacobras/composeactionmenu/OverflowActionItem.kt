@@ -59,7 +59,8 @@ internal fun OverflowActionItem(
     DropdownMenuItem(
         modifier = modifier,
         contentPadding = PaddingValues(start = 8.dp),
-        onClick = onClick
+        onClick = onClick,
+        enabled = item.enabled
     ) {
         val iconPainter = when {
             item.iconVector != null -> rememberVectorPainter(item.iconVector)
@@ -74,12 +75,14 @@ internal fun OverflowActionItem(
             )
         }
         Spacer(modifier = Modifier.width(8.dp))
+
+        val textAlpha = if (item.enabled) 1.0f else 0.5f
         Text(
             modifier = Modifier
                 .weight(1f)
                 .padding(end = 8.dp),
             text = stringResource(item.titleResId),
-            color = MaterialTheme.colors.onBackground,
+            color = MaterialTheme.colors.onBackground.copy(alpha = textAlpha),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
@@ -121,6 +124,18 @@ private fun RegularOverflowActionWithoutIconPreview() {
         key = "search",
         titleResId = android.R.string.ok,
         iconVector = null,
+        onClick = {}
+    ))
+}
+
+@Preview(showBackground = true, backgroundColor = 0xfff, device = Devices.PIXEL_2)
+@Composable
+private fun DisabledOverflowActionWithoutIconPreview() {
+    OverflowActionItem(item = RegularActionItem(
+        key = "search",
+        titleResId = android.R.string.ok,
+        iconVector = null,
+        enabled = false,
         onClick = {}
     ))
 }

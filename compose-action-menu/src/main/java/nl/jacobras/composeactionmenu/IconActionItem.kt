@@ -49,11 +49,11 @@ internal fun IconActionItem(
     }
 
     if (iconPainter != null) {
-        IconButton(modifier = modifier, onClick = onClick) {
+        IconButton(modifier = modifier, onClick = onClick, enabled = item.enabled) {
             Icon(iconPainter, title, tint = MaterialTheme.colors.onPrimary)
         }
     } else {
-        TextButton(modifier = modifier, onClick = onClick) {
+        TextButton(modifier = modifier, onClick = onClick, enabled = item.enabled) {
             Text(
                 text = title,
                 color = MaterialTheme.colors.onPrimary.copy(alpha = LocalContentAlpha.current),
@@ -75,11 +75,35 @@ private fun RegularIconActionPreview() {
 
 @Preview
 @Composable
+private fun DisabledIconActionPreview() {
+    IconActionItem(item = RegularActionItem(
+        key = "search",
+        titleResId = android.R.string.ok,
+        iconVector = Icons.Filled.Search,
+        enabled = false,
+        onClick = {}
+    ))
+}
+
+@Preview
+@Composable
 private fun TextIconActionPreview() {
     IconActionItem(item = RegularActionItem(
         key = "search",
         titleResId = android.R.string.ok,
         iconVector = null,
+        onClick = {}
+    ))
+}
+
+@Preview
+@Composable
+private fun DisabledTextIconActionPreview() {
+    IconActionItem(item = RegularActionItem(
+        key = "search",
+        titleResId = android.R.string.ok,
+        iconVector = null,
+        enabled = false,
         onClick = {}
     ))
 }

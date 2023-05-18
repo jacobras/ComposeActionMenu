@@ -18,7 +18,8 @@ sealed class ActionItem(
     @StringRes val titleResId: Int,
     val iconVector: ImageVector?,
     @DrawableRes val iconDrawable: Int = 0,
-    val showAsAction: ShowAsActionMode
+    val showAsAction: ShowAsActionMode,
+    val enabled: Boolean
 )
 
 /**
@@ -36,9 +37,10 @@ class RegularActionItem(
     @StringRes titleResId: Int,
     iconVector: ImageVector? = null,
     @DrawableRes iconDrawable: Int = 0,
+    enabled: Boolean = true,
     showAsAction: ShowAsActionMode = ShowAsActionMode.IF_ROOM,
     val onClick: (key: String) -> Unit
-) : ActionItem(key, titleResId, iconVector, iconDrawable, showAsAction)
+) : ActionItem(key, titleResId, iconVector, iconDrawable, showAsAction, enabled)
 
 /**
  * A multi-checkable action item. This will never be shown as an icon, because then the check box can not be shown.
@@ -55,9 +57,10 @@ class CheckableActionItem(
     @StringRes titleResId: Int,
     iconVector: ImageVector? = null,
     @DrawableRes iconDrawable: Int = 0,
+    enabled: Boolean = true,
     val isChecked: Boolean,
     val onClick: (key: String) -> Unit
-) : ActionItem(key, titleResId, iconVector, iconDrawable, ShowAsActionMode.NEVER)
+) : ActionItem(key, titleResId, iconVector, iconDrawable, ShowAsActionMode.NEVER, enabled)
 
 /**
  * A radio-selectable action item. This will never be shown as an icon, because then the radio button can not be shown.
@@ -74,9 +77,10 @@ class RadioActionItem(
     @StringRes titleResId: Int,
     iconVector: ImageVector? = null,
     @DrawableRes iconDrawable: Int = 0,
+    enabled: Boolean = true,
     val isSelected: Boolean,
     val onClick: (key: String) -> Unit
-) : ActionItem(key, titleResId, iconVector, iconDrawable, ShowAsActionMode.NEVER)
+) : ActionItem(key, titleResId, iconVector, iconDrawable, ShowAsActionMode.NEVER, enabled)
 
 /**
  * A action item that opens a sub group. Will be shown as an icon if there's room for it by default.
@@ -94,6 +98,7 @@ class GroupActionItem(
     @StringRes titleResId: Int,
     iconVector: ImageVector? = null,
     @DrawableRes iconDrawable: Int = 0,
+    enabled: Boolean = true,
     showAsAction: ShowAsActionMode = ShowAsActionMode.IF_ROOM,
     val childOptions: List<ActionItem>
-) : ActionItem(key, titleResId, iconVector, iconDrawable, showAsAction)
+) : ActionItem(key, titleResId, iconVector, iconDrawable, showAsAction, enabled)

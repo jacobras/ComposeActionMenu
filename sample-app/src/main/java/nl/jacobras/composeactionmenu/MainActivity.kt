@@ -121,6 +121,13 @@ class MainActivity : ComponentActivity() {
             )
         ),
         RegularActionItem(
+            key = "disabledExample",
+            titleResId = R.string.disabled_example,
+            showAsAction = ShowAsActionMode.NEVER,
+            enabled = false,
+            onClick = ::onActionItemClick
+        ),
+        RegularActionItem(
             key = "settings",
             titleResId = R.string.settings,
             showAsAction = ShowAsActionMode.NEVER,
