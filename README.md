@@ -23,7 +23,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-    implementation "com.github.jacobras:ComposeActionMenu:1.1.0"
+    implementation "com.github.jacobras:ComposeActionMenu:1.2.0"
 }
 ```
 
@@ -39,6 +39,9 @@ See the Android docs for information about the specific Compose library versions
  </tr>
  <tr>
   <td>Compose 2023.01.00</td><td><img alt="JitPack" src="https://img.shields.io/jitpack/version/com.github.jacobras/composeactionmenu.svg?versionPrefix=1.1.0"></td>
+ </tr>
+ <tr>
+  <td>Compose 2023.05.01</td><td><img alt="JitPack" src="https://img.shields.io/jitpack/version/com.github.jacobras/composeactionmenu.svg?versionPrefix=1.2.0"></td>
  </tr>
 </table>
 
