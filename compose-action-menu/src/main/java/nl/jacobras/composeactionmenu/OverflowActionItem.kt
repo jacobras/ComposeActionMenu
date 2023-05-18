@@ -70,7 +70,7 @@ internal fun OverflowActionItem(
         if (iconPainter != null) {
             Icon(
                 painter = iconPainter,
-                tint = colors.iconTint,
+                tint = colors.dropdownIconTint,
                 contentDescription = null
             )
         }
@@ -96,7 +96,7 @@ internal fun OverflowActionItem(
             is GroupActionItem -> {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_menu_right),
-                    tint = colors.iconTint,
+                    tint = colors.dropdownIconTint,
                     contentDescription = null
                 )
                 Spacer(modifier = Modifier.width(8.dp))

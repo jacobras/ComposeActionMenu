@@ -65,6 +65,7 @@ fun ActionMenu(
             IconActionItem(
                 modifier = Modifier.testTag("ActionMenu#${item.key}"),
                 item = item,
+                tint = colors.regularIconTint,
                 showSubMenu = { subMenuContent = it },
                 hideSubMenu = { subMenuContent = emptyList() }
             )
@@ -76,14 +77,14 @@ fun ActionMenu(
             modifier = Modifier.testTag("ActionMenu#overflow"),
             onClick = { showOverflowMenu = true }
         ) {
-            Icon(Icons.Default.MoreVert, "More actions", tint = MaterialTheme.colors.onPrimary)
+            Icon(Icons.Default.MoreVert, "More actions", tint = colors.regularIconTint)
         }
     }
 
     DropdownMenu(
         modifier = Modifier
             .width(240.dp)
-            .background(colors.backgroundColor),
+            .background(colors.dropdownBackgroundColor),
         offset = DpOffset(0.dp, (-10).dp),
         expanded = showOverflowMenu || subMenuContent.isNotEmpty(),
         onDismissRequest = { showOverflowMenu = false; subMenuContent = emptyList() }

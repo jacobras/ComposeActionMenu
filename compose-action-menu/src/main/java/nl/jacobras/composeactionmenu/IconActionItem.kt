@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -19,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 internal fun IconActionItem(
     modifier: Modifier = Modifier,
     item: ActionItem,
+    tint: Color = DefaultActionMenuColors().regularIconTint,
     showSubMenu: (items: List<ActionItem>) -> Unit = {},
     hideSubMenu: () -> Unit = {}
 ) {
@@ -50,13 +52,13 @@ internal fun IconActionItem(
 
     if (iconPainter != null) {
         IconButton(modifier = modifier, onClick = onClick, enabled = item.enabled) {
-            Icon(iconPainter, title, tint = MaterialTheme.colors.onPrimary)
+            Icon(iconPainter, title, tint = tint)
         }
     } else {
         TextButton(modifier = modifier, onClick = onClick, enabled = item.enabled) {
             Text(
                 text = title,
-                color = MaterialTheme.colors.onPrimary.copy(alpha = LocalContentAlpha.current),
+                color = tint.copy(alpha = LocalContentAlpha.current),
             )
         }
     }
@@ -71,6 +73,20 @@ private fun RegularIconActionPreview() {
         iconVector = Icons.Filled.Search,
         onClick = {}
     ))
+}
+
+@Preview
+@Composable
+private fun BlueIconActionPreview() {
+    IconActionItem(
+        item = RegularActionItem(
+            key = "search",
+            titleResId = android.R.string.ok,
+            iconVector = Icons.Filled.Search,
+            onClick = {}
+        ),
+        tint = Color.Blue
+    )
 }
 
 @Preview
@@ -94,6 +110,19 @@ private fun TextIconActionPreview() {
         iconVector = null,
         onClick = {}
     ))
+}
+
+@Preview
+@Composable
+private fun BlueTextIconActionPreview() {
+    IconActionItem(
+        item = RegularActionItem(
+            key = "search",
+            titleResId = android.R.string.ok,
+            iconVector = null,
+            onClick = {}
+        ),
+        tint = Color.Blue)
 }
 
 @Preview
