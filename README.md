@@ -35,13 +35,13 @@ See the Android docs for information about the specific Compose library versions
 
 <table>
  <tr>
-  <td>Compose 1.1.0-rc01</td><td><img alt="JitPack" src="https://img.shields.io/jitpack/version/com.github.jacobras/composeactionmenu.svg?versionPrefix=1.0.0"></td>
+  <td>Compose 1.1.0-rc01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td>
  </tr>
  <tr>
-  <td>Compose 2023.01.00</td><td><img alt="JitPack" src="https://img.shields.io/jitpack/version/com.github.jacobras/composeactionmenu.svg?versionPrefix=1.1.0"></td>
+  <td>Compose 2023.01.00</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td>
  </tr>
  <tr>
-  <td>Compose 2023.05.01</td><td><img alt="JitPack" src="https://img.shields.io/jitpack/version/com.github.jacobras/composeactionmenu.svg?versionPrefix=1.2.0"></td>
+  <td>Compose 2023.05.01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td>
  </tr>
 </table>
 
