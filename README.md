@@ -114,8 +114,7 @@ There's a reserved key for the overflow icon: `"ActionMenu#overflow"`.
 
 # Production example
 
-Here's a production example to check out: the next update of my note taking app uses ComposeActionMenu. It's not released yet but when it
-is, this text will be updated.
+My note taking app uses ComposeActionMenu:
 
 <https://play.google.com/store/apps/details?id=nl.jacobras.notes>
 
