@@ -16,4 +16,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComposeActionMenu"
 include(":sample-app")
+include(":sample-desktop")
 include(":compose-action-menu")

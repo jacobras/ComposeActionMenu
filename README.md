@@ -15,6 +15,12 @@ This library provides an easy-to-use action menu for Compose, since Compose does
 
 ![Animated preview image](preview.gif)
 
+### Sample apps
+
+Run Android sample: `gradlew sample-app:installDebug`
+
+Run Desktop sample: `gradlew sample-desktop:run`
+
 # Installation
 
 ```groovy
