@@ -1,6 +1,9 @@
 # Compose Action Menu
 
-This library provides an easy-to-use action menu for Compose, since Compose doesn't offer this by default.
+![Android](https://img.shields.io/badge/-android-6EDB8D.svg?style=flat)
+![JVM](https://img.shields.io/badge/-jvm-DB413D.svg?style=flat)
+
+This multi-platform library provides an easy-to-use action menu for Compose, since Compose doesn't offer this by default.
 
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-ComposeActionMenu-green.svg?style=flat )]( https://android-arsenal.com/details/1/8261 )
 
@@ -12,6 +15,7 @@ This library provides an easy-to-use action menu for Compose, since Compose does
 - Selectable/checkable items;
 - Nested sub menus;
 - Automatic overflow for items that don't fit the specified maximum.
+- Kotlin Multiplatform (KMP) since version 2.0.0. For now just Android and JVM.
 
 ![Animated preview image](preview.gif)
 
@@ -35,21 +39,25 @@ dependencies {
 
 ## Compose version
 
-This library uses the Compose BOM (Bill of Materials). Each version depends on specific Compose dependencies.
-
-See the Android docs for information about the specific Compose library versions in each BOM: https://developer.android.com/jetpack/compose/bom/bom-mapping.
+Each version depends on specific Compose dependencies.
 
 <table>
  <tr>
   <td>Compose 1.1.0-rc01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td>
  </tr>
  <tr>
-  <td>Compose 2023.01.00</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td>
+  <td>Compose BOM 2023.01.00</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td>
  </tr>
  <tr>
-  <td>Compose 2023.05.01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td>
+  <td>Compose BOM 2023.05.01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td>
+ </tr>
+ <tr>
+  <td>Compose Multiplatform 1.4.1</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v2.0.0-blue"></td>
  </tr>
 </table>
+
+*BOM = Bill of Materials. See the Android docs for information about the specific Compose library versions in each
+BOM: https://developer.android.com/jetpack/compose/bom/bom-mapping.
 
 # Usage
 
@@ -57,7 +65,7 @@ See the Android docs for information about the specific Compose library versions
 val toolbarActions = listOf(
     RegularActionItem(
         key = "settings",
-        titleResId = R.string.settings,
+        title = stringResource(R.string.settings),
         onClick = { /* TODO: Open settings screen */ }
     )
 )
@@ -87,7 +95,7 @@ val subOption3 = RegularActionItem(key = "subOption3", /* ... */)
 
 val group = GroupActionItem(
     key = "myGroup",
-    title = R.string.group_title,
+    title = stringResource(R.string.group_title),
     childOptions = listOf(subOption1, subOption2, subOption3)
 )
 ```
@@ -125,6 +133,31 @@ My note taking app uses ComposeActionMenu:
 <https://play.google.com/store/apps/details?id=nl.jacobras.notes>
 
 ![](preview_notes.png)
+
+# Migrating from 1.x to 2.0.0
+
+Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with generic String + Painter support.
+
+1.x:
+
+```kotlin
+RegularActionItem(
+    // [..]
+    titleResId = R.string.settings,
+    iconDrawable = R.drawable.icon
+)
+```
+
+2.x:
+
+```kotlin
+RegularActionItem(
+    // [..]
+    title = stringResource(R.string.settings), // inside a @Composable
+    title = context.getString(R.string.settings), // from non-Compose context
+    icon = painterResource(R.drawable.icon)
+)
+```
 
 # License
 
