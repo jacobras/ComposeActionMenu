@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -13,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "ComposeActionMenu"
-include ':sample-app'
-include ':compose-action-menu'
+include(":sample-app")
+include(":compose-action-menu")

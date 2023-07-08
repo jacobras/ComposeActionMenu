@@ -6,7 +6,6 @@ import org.gradle.kotlin.dsl.libs
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")
 }
 
 android {
