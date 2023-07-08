@@ -1,12 +1,12 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.gradle.kotlin.dsl.implementation
 import org.gradle.kotlin.dsl.libs
 
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
     id("com.android.library")
+    id("maven-publish")
 }
 
 android {
@@ -53,6 +53,20 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(libs.compose.activity)
+            }
+        }
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.jacobras"
+            artifactId = "composeactionmenu"
+            version = "1.2.0"
+
+            afterEvaluate {
+                from(components["release"])
             }
         }
     }
