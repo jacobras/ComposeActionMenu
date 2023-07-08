@@ -5,8 +5,8 @@ import org.gradle.kotlin.dsl.libs
 
 plugins {
     kotlin("multiplatform")
+    id("org.jetbrains.compose")
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -41,12 +41,10 @@ kotlin {
 }
 
 dependencies {
-    // BoMs
-    implementation(platform(libs.compose.bom))
-
     implementation(libs.compose.activity)
-    implementation(libs.compose.foundation)
-    implementation(libs.compose.material)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling)
+    implementation(compose.foundation)
+    implementation(compose.material)
+    implementation(compose.preview)
+    implementation(compose.ui)
+    implementation(compose.uiTooling)
 }
