@@ -63,7 +63,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.jacobras"
             artifactId = "composeactionmenu"
-            version = "1.2.0"
+            version = "2.0.0"
 
             afterEvaluate {
                 from(components["release"])
