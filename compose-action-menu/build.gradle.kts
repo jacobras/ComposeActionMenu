@@ -44,7 +44,6 @@ dependencies {
     implementation(platform(libs.compose.bom))
 
     implementation(libs.compose.activity)
-    implementation(libs.compose.compiler)
     implementation(libs.compose.foundation)
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
