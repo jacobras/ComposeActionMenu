@@ -1,5 +1,6 @@
 package nl.jacobras.composeactionmenu
 
+import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.LocalContentAlpha
@@ -11,9 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 internal fun IconActionItem(
@@ -23,20 +21,23 @@ internal fun IconActionItem(
     showSubMenu: (items: List<ActionItem>) -> Unit = {},
     hideSubMenu: () -> Unit = {}
 ) {
-    val title = stringResource(item.titleResId)
+    val title = item.title
     val onClick: () -> Unit = {
         when (item) {
             is GroupActionItem -> {
                 showSubMenu(item.childOptions)
             }
+
             is CheckableActionItem -> {
                 hideSubMenu()
                 item.onClick(item.key)
             }
+
             is RadioActionItem -> {
                 hideSubMenu()
                 item.onClick(item.key)
             }
+
             is RegularActionItem -> {
                 hideSubMenu()
                 item.onClick(item.key)
@@ -45,7 +46,7 @@ internal fun IconActionItem(
     }
     val iconPainter = when {
         item.iconVector != null -> rememberVectorPainter(item.iconVector)
-        item.iconDrawable != 0 -> painterResource(id = item.iconDrawable)
+        item.iconPainter != null -> item.iconPainter
         else -> null
     }
 
@@ -66,72 +67,36 @@ internal fun IconActionItem(
 @Preview
 @Composable
 private fun RegularIconActionPreview() {
-    IconActionItem(item = RegularActionItem(
-        key = "search",
-        titleResId = android.R.string.ok,
-        iconVector = Icons.Filled.Search,
-        onClick = {}
-    ))
+    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = Icons.Filled.Search, onClick = {}))
 }
 
 @Preview
 @Composable
 private fun BlueIconActionPreview() {
-    IconActionItem(
-        item = RegularActionItem(
-            key = "search",
-            titleResId = android.R.string.ok,
-            iconVector = Icons.Filled.Search,
-            onClick = {}
-        ),
-        tint = Color.Blue
-    )
-}
-
-@Preview
-@Composable
-private fun DisabledIconActionPreview() {
-    IconActionItem(item = RegularActionItem(
-        key = "search",
-        titleResId = android.R.string.ok,
-        iconVector = Icons.Filled.Search,
-        enabled = false,
-        onClick = {}
-    ))
-}
-
-@Preview
-@Composable
-private fun TextIconActionPreview() {
-    IconActionItem(item = RegularActionItem(
-        key = "search",
-        titleResId = android.R.string.ok,
-        iconVector = null,
-        onClick = {}
-    ))
-}
-
-@Preview
-@Composable
-private fun BlueTextIconActionPreview() {
-    IconActionItem(
-        item = RegularActionItem(
-            key = "search",
-            titleResId = android.R.string.ok,
-            iconVector = null,
-            onClick = {}
-        ),
+    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = Icons.Filled.Search, onClick = {}),
         tint = Color.Blue)
 }
 
 @Preview
 @Composable
+private fun DisabledIconActionPreview() {
+    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = Icons.Filled.Search, enabled = false, onClick = {}))
+}
+
+@Preview
+@Composable
+private fun TextIconActionPreview() {
+    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = null, onClick = {}))
+}
+
+@Preview
+@Composable
+private fun BlueTextIconActionPreview() {
+    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = null, onClick = {}), tint = Color.Blue)
+}
+
+@Preview
+@Composable
 private fun DisabledTextIconActionPreview() {
-    IconActionItem(item = RegularActionItem(
-        key = "search",
-        titleResId = android.R.string.ok,
-        iconVector = null,
-        enabled = false,
-        onClick = {}
-    ))
+    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = null, enabled = false, onClick = {}))
 }

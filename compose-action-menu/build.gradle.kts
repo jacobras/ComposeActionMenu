@@ -38,13 +38,22 @@ android {
 
 kotlin {
     android {}
-}
+    jvm {}
 
-dependencies {
-    implementation(libs.compose.activity)
-    implementation(compose.foundation)
-    implementation(compose.material)
-    implementation(compose.preview)
-    implementation(compose.ui)
-    implementation(compose.uiTooling)
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.preview)
+                implementation(compose.ui)
+                implementation(compose.uiTooling)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.compose.activity)
+            }
+        }
+    }
 }

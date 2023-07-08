@@ -120,6 +120,7 @@ private fun splitItems(items: List<ActionItem>, maxNumberOfIcons: Int): Pair<Lis
                 iconItems.add(item)
                 availableIconSpaces--
             }
+
             ShowAsActionMode.IF_ROOM -> {
                 if (availableIconSpaces > reservedSpaces) {
                     iconItems.add(item)
@@ -128,6 +129,7 @@ private fun splitItems(items: List<ActionItem>, maxNumberOfIcons: Int): Pair<Lis
                     overflowItems.add(item)
                 }
             }
+
             ShowAsActionMode.NEVER -> {
                 overflowItems.add(item)
             }
