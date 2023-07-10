@@ -14,7 +14,7 @@ This multi-platform library provides an easy-to-use action menu for Compose, sin
 - Icons (optional);
 - Selectable/checkable items;
 - Nested sub menus;
-- Automatic overflow for items that don't fit the specified maximum.
+- Automatic overflow for items that don't fit the specified maximum;
 - Kotlin Multiplatform (KMP) since version 2.0.0, supporting Android and JVM.
 
 ![Animated preview image](preview.gif)
@@ -33,7 +33,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-    implementation "com.github.jacobras:ComposeActionMenu:1.2.0"
+    implementation "com.github.jacobras:ComposeActionMenu:2.0.0"
 }
 ```
 
@@ -43,16 +43,16 @@ Each version depends on specific Compose dependencies.
 
 <table>
  <tr>
-  <td>Compose 1.1.0-rc01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td><td>Compose 1.1.0-rc01</td>
  </tr>
  <tr>
-  <td>Compose BOM 2023.01.00</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td><td>Compose BOM 2023.01.00</td>
  </tr>
  <tr>
-  <td>Compose BOM 2023.05.01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td><td>Compose BOM 2023.05.01</td>
  </tr>
  <tr>
-  <td>Compose Multiplatform 1.4.1</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v2.0.0-blue"></td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v2.0.0-blue"></td><td>Compose Multiplatform 1.4.1</td>
  </tr>
 </table>
 
