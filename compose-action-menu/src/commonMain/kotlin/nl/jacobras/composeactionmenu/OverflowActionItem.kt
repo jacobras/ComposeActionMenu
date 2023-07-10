@@ -1,6 +1,5 @@
 package nl.jacobras.composeactionmenu
 
-import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -12,13 +11,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.RadioButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
@@ -111,73 +107,3 @@ internal fun OverflowActionItem(
     }
 }
 
-@Preview
-@Composable
-private fun RegularOverflowActionPreview() {
-    OverflowActionItem(item = RegularActionItem(
-        key = "search",
-        title = "OK",
-        iconVector = Icons.Filled.Search,
-        onClick = {}
-    ))
-}
-
-@Preview
-@Composable
-private fun RegularOverflowActionWithoutIconPreview() {
-    OverflowActionItem(item = RegularActionItem(
-        key = "search",
-        title = "OK",
-        iconVector = null,
-        onClick = {}
-    ))
-}
-
-@Preview
-@Composable
-private fun DisabledOverflowActionWithoutIconPreview() {
-    OverflowActionItem(item = RegularActionItem(
-        key = "search",
-        title = "OK",
-        iconVector = null,
-        enabled = false,
-        onClick = {}
-    ))
-}
-
-@Preview
-@Composable
-private fun CheckableOverflowActionPreview() {
-    OverflowActionItem(item = CheckableActionItem(
-        key = "search",
-        title = "OK",
-        iconVector = Icons.Filled.Search,
-        isChecked = true,
-        onClick = {}
-    ))
-}
-
-@Preview
-@Composable
-private fun RadioOverflowActionPreview() {
-    OverflowActionItem(item = RadioActionItem(
-        key = "search",
-        title = "OK",
-        iconVector = Icons.Filled.Search,
-        isSelected = true,
-        onClick = {}
-    ))
-}
-
-@Preview
-@Composable
-private fun GroupOverflowActionPreview() {
-    OverflowActionItem(
-        item = GroupActionItem(
-            key = "search",
-            title = "OK",
-            iconVector = Icons.Filled.Search,
-            childOptions = emptyList()
-        )
-    )
-}

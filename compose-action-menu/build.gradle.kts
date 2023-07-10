@@ -1,7 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.gradle.kotlin.dsl.libs
-
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
@@ -37,24 +35,19 @@ android {
 }
 
 kotlin {
-    android {}
-    jvm {}
+    android()
+    jvm("desktop")
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(compose.foundation)
                 implementation(compose.material)
-                implementation(compose.preview)
                 implementation(compose.ui)
                 implementation(compose.uiTooling)
             }
         }
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.compose.activity)
-            }
-        }
+        val desktopMain by getting {}
     }
 }
 

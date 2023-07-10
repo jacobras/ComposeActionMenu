@@ -15,7 +15,7 @@ This multi-platform library provides an easy-to-use action menu for Compose, sin
 - Selectable/checkable items;
 - Nested sub menus;
 - Automatic overflow for items that don't fit the specified maximum.
-- Kotlin Multiplatform (KMP) since version 2.0.0. For now just Android and JVM.
+- Kotlin Multiplatform (KMP) since version 2.0.0, supporting Android and JVM.
 
 ![Animated preview image](preview.gif)
 
