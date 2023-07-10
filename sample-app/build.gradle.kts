@@ -1,5 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
@@ -35,6 +37,8 @@ android {
 
 kotlin {
     android {}
+
+    jvmToolchain(17)
 }
 
 dependencies {
