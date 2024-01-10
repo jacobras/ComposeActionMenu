@@ -20,12 +20,6 @@ This multi-platform library provides an easy-to-use action menu for Compose, sin
 
 ![Animated preview image](preview.gif)
 
-### Sample apps
-
-Run Android sample: `gradlew sample-app:installDebug`
-
-Run Desktop sample: `gradlew sample-desktop:run`
-
 # Installation
 
 ```kotlin
@@ -127,14 +121,6 @@ composeTestRule.onNodeWithTag("ActionMenu#myKey").performClick()
 
 There's a reserved key for the overflow icon: `"ActionMenu#overflow"`.
 
-# Production example
-
-My note taking app uses ComposeActionMenu:
-
-<https://play.google.com/store/apps/details?id=nl.jacobras.notes>
-
-![](preview_notes.png)
-
 # Migrating from v1 to v2
 
 Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with string + Painter support.
@@ -160,3 +146,18 @@ RegularActionItem(
     // or: iconPainter = painterResource(R.drawable.icon)
 )
 ```
+
+# Sample apps
+
+The repository contains two sample apps.
+
+* Run Android: `gradlew sample-app:installDebug`
+* Run Desktop: `gradlew sample-desktop:run`
+
+# Production example
+
+My note taking app uses ComposeActionMenu:
+
+<https://play.google.com/store/apps/details?id=nl.jacobras.notes>
+
+![](preview_notes.png)
