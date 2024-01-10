@@ -1,6 +1,7 @@
 # Compose Action Menu
 
 ![Android](https://img.shields.io/badge/-android-6EDB8D.svg?style=flat)
+![iOS](http://img.shields.io/badge/-ios-CDCDCD.svg?style=flat)
 ![JVM](https://img.shields.io/badge/-jvm-DB413D.svg?style=flat)
 
 This multi-platform library provides an easy-to-use action menu for Compose, since Compose doesn't offer this by default.
@@ -15,7 +16,7 @@ This multi-platform library provides an easy-to-use action menu for Compose, sin
 - Selectable/checkable items;
 - Nested sub menus;
 - Automatic overflow for items that don't fit the specified maximum;
-- Kotlin Multiplatform (KMP) since version 2.0.0, supporting Android and JVM.
+- Kotlin Multiplatform (KMP) since version 2.0.0, supporting Android, iOS and JVM (desktop).
 
 ![Animated preview image](preview.gif)
 
@@ -136,7 +137,7 @@ My note taking app uses ComposeActionMenu:
 
 # Migrating from 1.x to 2.0.0
 
-Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with generic String + Painter support.
+Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with string + Painter support.
 
 1.x:
 
@@ -155,6 +156,7 @@ RegularActionItem(
     // [..]
     title = stringResource(R.string.settings), // inside a @Composable
     // or: title = context.getString(R.string.settings), // from non-Compose context
-    icon = painterResource(R.drawable.icon)
+    iconVector = Icons.Default.Info
+    // or: iconPainter = painterResource(R.drawable.icon)
 )
 ```
