@@ -158,10 +158,3 @@ RegularActionItem(
     icon = painterResource(R.drawable.icon)
 )
 ```
-
-# Running the samples
-
-The repository includes two sample apps:
-
-* Android: to demonstrate the library being used in a default Android project
-* Desktop: to demonstrate the library being used in a multiplatform desktop app (run with `gradlew sample-desktop:run`)
