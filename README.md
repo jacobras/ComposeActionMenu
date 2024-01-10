@@ -59,9 +59,10 @@ BOM: https://developer.android.com/jetpack/compose/bom/bom-mapping.
 ```kotlin
 val toolbarActions = listOf(
     RegularActionItem(
-        key = "settings",
-        title = stringResource(R.string.settings),
-        onClick = { /* TODO: Open settings screen */ }
+        key = "search",
+        title = stringResource(R.string.search),
+        iconVector = Icons.Filled.Search,
+        onClick = { /* TODO: Open search screen */ }
     )
 )
 
@@ -123,15 +124,14 @@ There's a reserved key for the overflow icon: `"ActionMenu#overflow"`.
 
 # Migrating from v1 to v2
 
-Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with string + Painter support.
+Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with broader string + Painter support.
 
 1.x:
 
 ```kotlin
 RegularActionItem(
-    // [..]
-    titleResId = R.string.settings,
-    iconDrawable = R.drawable.icon
+    titleResId = R.string.search,
+    iconDrawable = R.drawable.search
 )
 ```
 
@@ -139,11 +139,8 @@ RegularActionItem(
 
 ```kotlin
 RegularActionItem(
-    // [..]
-    title = stringResource(R.string.settings), // inside a @Composable
-    // or: title = context.getString(R.string.settings), // from non-Compose context
-    iconVector = Icons.Default.Info
-    // or: iconPainter = painterResource(R.drawable.icon)
+    title = stringResource(R.string.search),
+    iconPainter = painterResource(R.drawable.search)
 )
 ```
 
