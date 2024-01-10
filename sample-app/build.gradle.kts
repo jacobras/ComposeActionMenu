@@ -1,15 +1,11 @@
-@file:Suppress("UnstableApiUsage")
-
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.compose")
     id("com.android.application")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 34
+    namespace = "nl.jacobras.composeactionmenu.sample"
 
     buildFeatures {
         compose = true
@@ -21,32 +17,35 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
     defaultConfig {
         applicationId = "nl.jacobras.composeactionmenu"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-}
-
-kotlin {
-    android {}
-
-    jvmToolchain(17)
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
+    // BoMs
+    implementation(platform(libs.compose.bom))
+
     // The actual library
     implementation(project(":compose-action-menu"))
 
     implementation(libs.compose.activity)
-    implementation(compose.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.android.test.junit)
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.material)
+    implementation(libs.compose.ui)
 }

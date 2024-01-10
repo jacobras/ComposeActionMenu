@@ -1,4 +1,4 @@
-package nl.jacobras.composeactionmenu
+package nl.jacobras.composeactionmenu.sample
 
 import android.os.Bundle
 import android.widget.Toast
@@ -20,6 +20,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import nl.jacobras.composeactionmenu.ActionMenu
+import nl.jacobras.composeactionmenu.CheckableActionItem
+import nl.jacobras.composeactionmenu.GroupActionItem
+import nl.jacobras.composeactionmenu.RadioActionItem
+import nl.jacobras.composeactionmenu.RegularActionItem
+import nl.jacobras.composeactionmenu.ShowAsActionMode
 
 class MainActivity : ComponentActivity() {
 
