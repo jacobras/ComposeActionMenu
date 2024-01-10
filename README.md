@@ -28,7 +28,7 @@ dependencies {
 }
 ```
 
-Note: version 2 and newer are available from Maven Central, whereas previous versions where distributed through JitPack.
+Note: version 2 and newer are available from Maven Central, whereas previous versions were distributed through JitPack.
 
 See also: [Migrating to V2](#migrating-from-v1-to-v2).
 
