@@ -75,7 +75,7 @@ kotlin {
                 implementation(compose.ui)
             }
         }
-        val desktopMain by getting {
+        val androidMain by getting {
             dependencies {
                 implementation(compose.uiTooling)
             }
