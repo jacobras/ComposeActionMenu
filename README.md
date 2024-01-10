@@ -28,15 +28,15 @@ Run Desktop sample: `gradlew sample-desktop:run`
 
 # Installation
 
-```groovy
-repositories {
-    google()
-    maven { url "https://jitpack.io" }
-}
+```kotlin
 dependencies {
-    implementation "com.github.jacobras:ComposeActionMenu:2.0.0"
+    implementation("nl.jacobras:compose-action-menu:2.0.0")
 }
 ```
+
+Note: version 2 and newer are available from Maven Central, whereas previous versions where distributed through JitPack.
+
+See also: [Migrating to V2](#migrating-from-v1-to-v2).
 
 ## Compose version
 
@@ -53,7 +53,7 @@ Each version depends on specific Compose dependencies.
   <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td><td>Compose BOM 2023.05.01</td>
  </tr>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v2.0.0-blue"></td><td>Compose Multiplatform 1.4.1</td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/mavencentral-v2.0.0-blue"></td><td>Compose Multiplatform 1.5.1</td>
  </tr>
 </table>
 
@@ -135,7 +135,7 @@ My note taking app uses ComposeActionMenu:
 
 ![](preview_notes.png)
 
-# Migrating from 1.x to 2.0.0
+# Migrating from v1 to v2
 
 Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with string + Painter support.
 

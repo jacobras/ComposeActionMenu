@@ -34,7 +34,7 @@ mavenPublishing {
             }
         }
         scm {
-            url.set("https://github.com/jacobras/composeactionmenu")
+            url.set("https://github.com/jacobras/ComposeActionMenu")
         }
     }
 }
