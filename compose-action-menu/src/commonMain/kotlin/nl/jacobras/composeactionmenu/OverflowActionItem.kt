@@ -32,19 +32,16 @@ internal fun OverflowActionItem(
                 hideTopMenu()
                 showSubMenu(item.childOptions)
             }
-
             is CheckableActionItem -> {
                 hideTopMenu()
                 hideSubMenu()
                 item.onClick(item.key)
             }
-
             is RadioActionItem -> {
                 hideTopMenu()
                 hideSubMenu()
                 item.onClick(item.key)
             }
-
             is RegularActionItem -> {
                 hideTopMenu()
                 hideSubMenu()
@@ -87,11 +84,9 @@ internal fun OverflowActionItem(
             is CheckableActionItem -> {
                 Checkbox(checked = item.isChecked, onCheckedChange = { onClick() })
             }
-
             is RadioActionItem -> {
                 RadioButton(selected = item.isSelected, onClick = { onClick() })
             }
-
             is GroupActionItem -> {
                 Icon(
                     painter = rememberVectorPainter(Icons.Filled.OverflowRight),
@@ -100,9 +95,7 @@ internal fun OverflowActionItem(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
             }
-
             else -> Unit
         }
     }
 }
-
