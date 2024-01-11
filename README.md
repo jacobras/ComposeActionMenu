@@ -41,18 +41,15 @@ Each version depends on specific Compose dependencies.
   <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td><td>Compose 1.1.0-rc01</td>
  </tr>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td><td>Compose BOM 2023.01.00</td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td><td>Compose 1.3.3</td>
  </tr>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td><td>Compose BOM 2023.05.01</td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td><td>Compose 1.4.3</td>
  </tr>
  <tr>
   <td><img alt="JitPack" src="https://img.shields.io/badge/mavencentral-v2.0.0-blue"></td><td>Compose Multiplatform 1.5.1</td>
  </tr>
 </table>
-
-*BOM = Bill of Materials. See the Android docs for information about the specific Compose library versions in each
-BOM: https://developer.android.com/jetpack/compose/bom/bom-mapping.
 
 # Usage
 
