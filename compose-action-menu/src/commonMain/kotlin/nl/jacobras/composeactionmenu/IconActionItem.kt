@@ -43,7 +43,7 @@ internal fun IconActionItem(
     }
     val iconPainter = when {
         item.iconVector != null -> rememberVectorPainter(item.iconVector)
-        item.iconPainter != null -> item.iconPainter
+        item.icon != null -> item.icon
         else -> null
     }
 

@@ -140,7 +140,7 @@ RegularActionItem(
 ```kotlin
 RegularActionItem(
     title = stringResource(R.string.search),
-    iconPainter = painterResource(R.drawable.search)
+    icon = painterResource(R.drawable.search)
 )
 ```
 
