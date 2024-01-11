@@ -1,12 +1,11 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 34
+    namespace = "nl.jacobras.composeactionmenu.sample"
 
     buildFeatures {
         compose = true
@@ -27,7 +26,7 @@ android {
     defaultConfig {
         applicationId = "nl.jacobras.composeactionmenu"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -46,8 +45,7 @@ dependencies {
     implementation(project(":compose-action-menu"))
 
     implementation(libs.compose.activity)
-    implementation(libs.compose.compiler)
+    implementation(libs.compose.foundation)
     implementation(libs.compose.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.android.test.junit)
+    implementation(libs.compose.ui)
 }

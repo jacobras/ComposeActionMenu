@@ -8,7 +8,6 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
@@ -16,4 +15,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComposeActionMenu"
 include(":sample-app")
+include(":sample-desktop")
 include(":compose-action-menu")

@@ -1,4 +1,4 @@
-package nl.jacobras.composeactionmenu
+package nl.jacobras.composeactionmenu.sample
 
 import android.os.Bundle
 import android.widget.Toast
@@ -12,18 +12,20 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import nl.jacobras.composeactionmenu.ActionMenu
+import nl.jacobras.composeactionmenu.CheckableActionItem
+import nl.jacobras.composeactionmenu.GroupActionItem
+import nl.jacobras.composeactionmenu.RadioActionItem
+import nl.jacobras.composeactionmenu.RegularActionItem
+import nl.jacobras.composeactionmenu.ShowAsActionMode
 
 class MainActivity : ComponentActivity() {
 
@@ -61,6 +63,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    @Composable
     private fun buildToolbarActions(
         useLocationState: MutableState<Boolean>,
         contactMethodState: MutableState<Int>,
@@ -68,54 +71,54 @@ class MainActivity : ComponentActivity() {
     ) = listOf(
         RegularActionItem(
             key = "regularItem",
-            titleResId = R.string.regular_option,
+            title = stringResource(R.string.regular_option),
             iconVector = Icons.Default.Info,
             onClick = ::onActionItemClick
         ),
         GroupActionItem(
             key = "groupItem",
-            titleResId = R.string.radio_group,
+            title = stringResource(R.string.radio_group),
             iconVector = Icons.Default.Person,
             childOptions = listOf(
                 RadioActionItem(
-                    key = "radio1", titleResId = R.string.person_1, isSelected = personState.value == 1, onClick = { personState.value = 1 }
+                    key = "radio1", title = stringResource(R.string.person_1), isSelected = personState.value == 1, onClick = { personState.value = 1 }
                 ),
                 RadioActionItem(
-                    key = "radio2", titleResId = R.string.person_2, isSelected = personState.value == 2, onClick = { personState.value = 2 }
+                    key = "radio2", title = stringResource(R.string.person_2), isSelected = personState.value == 2, onClick = { personState.value = 2 }
                 ),
                 RadioActionItem(
-                    key = "radio3", titleResId = R.string.person_3, isSelected = personState.value == 3, onClick = { personState.value = 3 }
+                    key = "radio3", title = stringResource(R.string.person_3), isSelected = personState.value == 3, onClick = { personState.value = 3 }
                 ),
             )
         ),
         CheckableActionItem(
             key = "useLocation",
-            titleResId = R.string.use_location,
+            title = stringResource(R.string.use_location),
             iconVector = Icons.Default.LocationOn,
             isChecked = useLocationState.value,
             onClick = { useLocationState.value = !useLocationState.value }
         ),
         GroupActionItem(
             key = "contactMethod",
-            titleResId = R.string.contact_options,
+            title = stringResource(R.string.contact_options),
             childOptions = listOf(
                 RadioActionItem(
                     key = "contact1",
-                    titleResId = R.string.contact_1,
+                    title = stringResource(R.string.contact_1),
                     iconVector = Icons.Default.Phone,
                     isSelected = contactMethodState.value == 1,
                     onClick = { contactMethodState.value = 1 }
                 ),
                 RadioActionItem(
                     key = "contact2",
-                    titleResId = R.string.contact_2,
+                    title = stringResource(R.string.contact_2),
                     iconVector = Icons.Default.Email,
                     isSelected = contactMethodState.value == 2,
                     onClick = { contactMethodState.value = 2 }
                 ),
                 RadioActionItem(
                     key = "contact3",
-                    titleResId = R.string.contact_3,
+                    title = stringResource(R.string.contact_3),
                     iconVector = Icons.Default.Home,
                     isSelected = contactMethodState.value == 3,
                     onClick = { contactMethodState.value = 3 }
@@ -124,14 +127,14 @@ class MainActivity : ComponentActivity() {
         ),
         RegularActionItem(
             key = "disabledExample",
-            titleResId = R.string.disabled_example,
+            title = stringResource(R.string.disabled_example),
             showAsAction = ShowAsActionMode.NEVER,
             enabled = false,
             onClick = ::onActionItemClick
         ),
         RegularActionItem(
             key = "settings",
-            titleResId = R.string.settings,
+            title = stringResource(R.string.settings),
             showAsAction = ShowAsActionMode.NEVER,
             onClick = ::onActionItemClick
         )

@@ -1,6 +1,10 @@
 # Compose Action Menu
 
-This library provides an easy-to-use action menu for Compose, since Compose doesn't offer this by default.
+![Android](https://img.shields.io/badge/-android-6EDB8D.svg?style=flat)
+![iOS](http://img.shields.io/badge/-ios-CDCDCD.svg?style=flat)
+![JVM](https://img.shields.io/badge/-jvm-DB413D.svg?style=flat)
+
+This multi-platform library provides an easy-to-use action menu for Compose, since Compose doesn't offer this by default.
 
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-ComposeActionMenu-green.svg?style=flat )]( https://android-arsenal.com/details/1/8261 )
 
@@ -11,37 +15,39 @@ This library provides an easy-to-use action menu for Compose, since Compose does
 - Icons (optional);
 - Selectable/checkable items;
 - Nested sub menus;
-- Automatic overflow for items that don't fit the specified maximum.
+- Automatic overflow for items that don't fit the specified maximum;
+- Kotlin Multiplatform (KMP) since version 2.0.0, supporting Android, iOS and JVM (desktop).
 
 ![Animated preview image](preview.gif)
 
 # Installation
 
-```groovy
-repositories {
-    google()
-    maven { url "https://jitpack.io" }
-}
+```kotlin
 dependencies {
-    implementation "com.github.jacobras:ComposeActionMenu:1.2.0"
+    implementation("nl.jacobras:compose-action-menu:2.0.0")
 }
 ```
 
+Note: version 2 and newer are available from Maven Central, whereas previous versions were distributed through JitPack.
+
+See also: [Migrating to V2](#migrating-from-v1-to-v2).
+
 ## Compose version
 
-This library uses the Compose BOM (Bill of Materials). Each version depends on specific Compose dependencies.
-
-See the Android docs for information about the specific Compose library versions in each BOM: https://developer.android.com/jetpack/compose/bom/bom-mapping.
+Each version depends on specific Compose dependencies.
 
 <table>
  <tr>
-  <td>Compose 1.1.0-rc01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td><td>Compose 1.1.0-rc01</td>
  </tr>
  <tr>
-  <td>Compose 2023.01.00</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td><td>Compose 1.3.3</td>
  </tr>
  <tr>
-  <td>Compose 2023.05.01</td><td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td><td>Compose 1.4.3</td>
+ </tr>
+ <tr>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/mavencentral-v2.0.0-blue"></td><td>Compose Multiplatform 1.5.1</td>
  </tr>
 </table>
 
@@ -50,9 +56,10 @@ See the Android docs for information about the specific Compose library versions
 ```kotlin
 val toolbarActions = listOf(
     RegularActionItem(
-        key = "settings",
-        titleResId = R.string.settings,
-        onClick = { /* TODO: Open settings screen */ }
+        key = "search",
+        title = stringResource(R.string.search),
+        iconVector = Icons.Filled.Search,
+        onClick = { /* TODO: Open search screen */ }
     )
 )
 
@@ -81,7 +88,7 @@ val subOption3 = RegularActionItem(key = "subOption3", /* ... */)
 
 val group = GroupActionItem(
     key = "myGroup",
-    title = R.string.group_title,
+    title = stringResource(R.string.group_title),
     childOptions = listOf(subOption1, subOption2, subOption3)
 )
 ```
@@ -112,6 +119,35 @@ composeTestRule.onNodeWithTag("ActionMenu#myKey").performClick()
 
 There's a reserved key for the overflow icon: `"ActionMenu#overflow"`.
 
+# Migrating from v1 to v2
+
+Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with broader string + Painter support.
+
+1.x:
+
+```kotlin
+RegularActionItem(
+    titleResId = R.string.search,
+    iconDrawable = R.drawable.search
+)
+```
+
+2.x:
+
+```kotlin
+RegularActionItem(
+    title = stringResource(R.string.search),
+    icon = painterResource(R.drawable.search)
+)
+```
+
+# Sample apps
+
+The repository contains two sample apps.
+
+* Run Android: `gradlew sample-app:installDebug`
+* Run Desktop: `gradlew sample-desktop:run`
+
 # Production example
 
 My note taking app uses ComposeActionMenu:
@@ -119,29 +155,3 @@ My note taking app uses ComposeActionMenu:
 <https://play.google.com/store/apps/details?id=nl.jacobras.notes>
 
 ![](preview_notes.png)
-
-# License
-
-```
-MIT License
-
-Copyright (c) 2021 Jacob Ras
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
