@@ -2,11 +2,11 @@ package nl.jacobras.composeactionmenu
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -44,7 +44,7 @@ import androidx.compose.ui.unit.dp
 fun ActionMenu(
     items: List<ActionItem>,
     maxNumberOfIcons: Int = 3,
-    colors: ActionMenuColors = DefaultActionMenuColors()
+    colors: ActionMenuColors = ActionMenuDefaults.colors()
 ) {
     if (items.isEmpty()) {
         return
@@ -62,9 +62,9 @@ fun ActionMenu(
     iconActions.forEach { item ->
         key(item.key) {
             IconActionItem(
-                modifier = Modifier.testTag("ActionMenu#${item.key}"),
                 item = item,
-                tint = colors.regularIconTint,
+                colors = colors,
+                modifier = Modifier.testTag("ActionMenu#${item.key}"),
                 showSubMenu = { subMenuContent = it },
                 hideSubMenu = { subMenuContent = emptyList() }
             )
@@ -76,14 +76,18 @@ fun ActionMenu(
             modifier = Modifier.testTag("ActionMenu#overflow"),
             onClick = { showOverflowMenu = true }
         ) {
-            Icon(Icons.Default.MoreVert, "More actions", tint = colors.regularIconTint)
+            Icon(
+                imageVector = Icons.Default.MoreVert,
+                contentDescription = "More actions",
+                tint = colors.contentColor
+            )
         }
     }
 
     DropdownMenu(
         modifier = Modifier
             .width(240.dp)
-            .background(colors.dropdownBackgroundColor),
+            .background(colors.dropdownContainerColor),
         offset = DpOffset(0.dp, (-10).dp),
         expanded = showOverflowMenu || subMenuContent.isNotEmpty(),
         onDismissRequest = { showOverflowMenu = false; subMenuContent = emptyList() }
@@ -93,9 +97,9 @@ fun ActionMenu(
         content.forEach { item ->
             key(item.key) {
                 OverflowActionItem(
-                    modifier = Modifier.testTag("ActionMenu#${item.key}"),
                     item = item,
                     colors = colors,
+                    modifier = Modifier.testTag("ActionMenu#${item.key}"),
                     hideTopMenu = { showOverflowMenu = false },
                     showSubMenu = { subMenuContent = it },
                     hideSubMenu = { subMenuContent = emptyList() }
@@ -120,6 +124,7 @@ private fun splitItems(items: List<ActionItem>, maxNumberOfIcons: Int): Pair<Lis
                 iconItems.add(item)
                 availableIconSpaces--
             }
+
             ShowAsActionMode.IF_ROOM -> {
                 if (availableIconSpaces > reservedSpaces) {
                     iconItems.add(item)
@@ -128,6 +133,7 @@ private fun splitItems(items: List<ActionItem>, maxNumberOfIcons: Int): Pair<Lis
                     overflowItems.add(item)
                 }
             }
+
             ShowAsActionMode.NEVER -> {
                 overflowItems.add(item)
             }

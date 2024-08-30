@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
     namespace = "nl.jacobras.composeactionmenu.sample"
 
     buildFeatures {
@@ -25,7 +25,7 @@ android {
     defaultConfig {
         applicationId = "nl.jacobras.composeactionmenu"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -45,6 +45,6 @@ dependencies {
 
     implementation(libs.compose.activity)
     implementation(libs.compose.foundation)
-    implementation(libs.compose.material)
+    implementation(libs.compose.material3)
     implementation(libs.compose.ui)
 }

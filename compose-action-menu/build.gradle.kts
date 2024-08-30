@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "nl.jacobras"
-version = "2.0.0"
+version = "3.0.0"
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01, true)
@@ -41,7 +41,7 @@ mavenPublishing {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
     namespace = "nl.jacobras.composeactionmenu"
 
     buildFeatures {
@@ -71,7 +71,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(compose.foundation)
-                implementation(compose.material)
+                implementation(compose.material3)
                 implementation(compose.ui)
             }
         }
