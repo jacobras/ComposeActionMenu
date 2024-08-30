@@ -2,8 +2,9 @@ import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     kotlin("multiplatform")
-    id("org.jetbrains.compose")
-    id("com.android.library")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.compose.compiler)
     id("com.vanniktech.maven.publish") version "0.27.0"
 }
 
@@ -52,9 +53,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 }
 
