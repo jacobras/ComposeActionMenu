@@ -16,7 +16,8 @@ This multi-platform library provides an easy-to-use action menu for Compose, sin
 - Selectable/checkable items;
 - Nested sub menus;
 - Automatic overflow for items that don't fit the specified maximum;
-- Kotlin Multiplatform (KMP) since version 2.0.0, supporting Android, iOS and JVM (desktop).
+- Kotlin Multiplatform (KMP) since version 2.0.0, supporting Android, iOS and JVM (desktop);
+- Material 2 & 3 support (library version 3.0.0 and higher).
 
 ![Animated preview image](preview.gif)
 
@@ -24,13 +25,70 @@ This multi-platform library provides an easy-to-use action menu for Compose, sin
 
 ```kotlin
 dependencies {
-    implementation("nl.jacobras:compose-action-menu:2.0.0")
+    implementation("nl.jacobras:compose-action-menu:3.0.0")
 }
 ```
 
-Note: version 2 and newer are available from Maven Central, whereas previous versions were distributed through JitPack.
+<details>
+<summary>Version 3 and newer are built upon Material 3, whereas previous versions use Material 2. Expand this for
+migration instructions.</summary>
 
-See also: [Migrating to V2](#migrating-from-v1-to-v2).
+### Migrating from v2 to v3
+
+Compose Action Menu version 3 is built upon Material 3. The custom colour names have been changed.
+
+2.x:
+
+```kotlin
+ActionMenu(
+    items = listOf(/* items */),
+    colors = DefaultActionMenuColors(
+        dropdownIconTint = myContentColor,
+        dropdownBackgroundColor = myOverflowContainerColor
+    )
+)
+```
+
+3.x:
+
+```kotlin
+ActionMenu(
+    items = listOf(/* items */),
+    colors = ActionMenuDefaults.colors(
+        contentColor = myContentColor,
+        overflowContainerColor = myOverflowContainerColor,
+        overflowContentColor = myContentColor
+    )
+)
+```
+</details>
+
+<details>
+<summary>Version 2 and newer are available from Maven Central, whereas previous versions were distributed through JitPack. Expand
+this for migration instructions.</summary>
+
+### Migrating from v1 to v2
+
+Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with broader string + Painter support.
+
+1.x:
+
+```kotlin
+RegularActionItem(
+    titleResId = R.string.search,
+    iconDrawable = R.drawable.search
+)
+```
+
+2.x:
+
+```kotlin
+RegularActionItem(
+    title = stringResource(R.string.search),
+    icon = painterResource(R.drawable.search)
+)
+```
+</details>
 
 ## Compose version
 
@@ -38,16 +96,29 @@ Each version depends on specific Compose dependencies.
 
 <table>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td><td>Compose 1.1.0-rc01</td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/mavencentral-v3.0.0-blue">
+  </td><td>Compose Multiplatform 1.6.11</td>
+  <td>Material 3</td>
  </tr>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td><td>Compose 1.3.3</td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/mavencentral-v2.0.0-blue">
+  </td><td>Compose Multiplatform 1.5.1</td>
+  <td>Material 2</td>
  </tr>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td><td>Compose 1.4.3</td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.2.0-blue"></td>
+  <td>Compose 1.4.3</td>
+  <td>Material 2</td>
  </tr>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/mavencentral-v2.0.0-blue"></td><td>Compose Multiplatform 1.5.1</td>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.1.0-blue"></td>
+  <td>Compose 1.3.3</td>
+  <td>Material 2</td>
+ </tr>
+ <tr>
+  <td><img alt="JitPack" src="https://img.shields.io/badge/jitpack-v1.0.0-blue"></td>
+  <td>Compose 1.1.0-rc01</td>
+  <td>Material 2</td>
  </tr>
 </table>
 
@@ -98,7 +169,7 @@ val group = GroupActionItem(
 `ActionMenu` takes some parameters:
 
 - `maxNumberOfIcons` Number of icons to show, including overflow menu icon (if needed);
-- `colors` Optional color configuration.
+- `colors` Optional color configuration. Usage: `colors = ActionMenuDefaults.colors(...)`.
 
 `ActionItem`s can be customised too:
 
@@ -118,28 +189,6 @@ composeTestRule.onNodeWithTag("ActionMenu#myKey").performClick()
 ```
 
 There's a reserved key for the overflow icon: `"ActionMenu#overflow"`.
-
-# Migrating from v1 to v2
-
-Compose Action Menu version 2 is built using KMP. Android-specific resource support is replaced with broader string + Painter support.
-
-1.x:
-
-```kotlin
-RegularActionItem(
-    titleResId = R.string.search,
-    iconDrawable = R.drawable.search
-)
-```
-
-2.x:
-
-```kotlin
-RegularActionItem(
-    title = stringResource(R.string.search),
-    icon = painterResource(R.drawable.search)
-)
-```
 
 # Sample apps
 
