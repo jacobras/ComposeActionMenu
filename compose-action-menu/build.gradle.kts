@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
-    id("com.vanniktech.maven.publish") version "0.27.0"
+    alias(libs.plugins.maven.publish)
 }
 
 group = "nl.jacobras"
@@ -16,7 +16,6 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01, true)
     signAllPublications()
 
-    @Suppress("UnstableApiUsage")
     pom {
         name.set("Compose Action Menu")
         description.set("An easy to use action/overflow menu for Jetpack Compose")
