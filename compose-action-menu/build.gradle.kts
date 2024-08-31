@@ -1,4 +1,5 @@
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
     kotlin("multiplatform")
@@ -56,6 +57,7 @@ android {
     }
 }
 
+@OptIn(ExperimentalWasmDsl::class)
 kotlin {
     applyDefaultHierarchyTemplate()
 
@@ -66,6 +68,8 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
     jvm("desktop")
+    js { browser() }
+    wasmJs { browser() }
 
     sourceSets {
         val commonMain by getting {

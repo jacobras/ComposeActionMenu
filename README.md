@@ -16,8 +16,8 @@ This multi-platform library provides an easy-to-use action menu for Compose, sin
 - Selectable/checkable items;
 - Nested sub menus;
 - Automatic overflow for items that don't fit the specified maximum;
-- Kotlin Multiplatform (KMP) since version 2.0.0, supporting Android, iOS and JVM (desktop);
-- Material 2 & 3 support (library version 3.0.0 and higher).
+- Kotlin Multiplatform (KMP) since version 2, supporting Android, iOS, JVM (desktop) and JS/WASM (since version 3);
+- Material 2 & 3 support (since version 3).
 
 ![Animated preview image](preview.gif)
 
@@ -61,6 +61,7 @@ ActionMenu(
     )
 )
 ```
+
 </details>
 
 <details>
@@ -88,6 +89,7 @@ RegularActionItem(
     icon = painterResource(R.drawable.search)
 )
 ```
+
 </details>
 
 ## Compose version
