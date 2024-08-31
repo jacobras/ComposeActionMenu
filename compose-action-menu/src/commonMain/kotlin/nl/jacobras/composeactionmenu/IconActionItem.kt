@@ -1,10 +1,9 @@
 package nl.jacobras.composeactionmenu
 
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -12,9 +11,9 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 
 @Composable
 internal fun IconActionItem(
-    modifier: Modifier = Modifier,
     item: ActionItem,
-    tint: Color = DefaultActionMenuColors().regularIconTint,
+    contentColor: Color,
+    modifier: Modifier = Modifier,
     showSubMenu: (items: List<ActionItem>) -> Unit = {},
     hideSubMenu: () -> Unit = {}
 ) {
@@ -49,14 +48,11 @@ internal fun IconActionItem(
 
     if (iconPainter != null) {
         IconButton(modifier = modifier, onClick = onClick, enabled = item.enabled) {
-            Icon(iconPainter, title, tint = tint)
+            Icon(iconPainter, title, tint = contentColor)
         }
     } else {
         TextButton(modifier = modifier, onClick = onClick, enabled = item.enabled) {
-            Text(
-                text = title,
-                color = tint.copy(alpha = LocalContentAlpha.current),
-            )
+            Text(text = title, color = contentColor)
         }
     }
 }

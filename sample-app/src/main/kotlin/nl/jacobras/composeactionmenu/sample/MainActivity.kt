@@ -8,13 +8,21 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -29,12 +37,13 @@ import nl.jacobras.composeactionmenu.ShowAsActionMode
 
 class MainActivity : ComponentActivity() {
 
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val useLocation = remember { mutableStateOf(false) }
-            val contactMethod = remember { mutableStateOf(2) }
-            val person = remember { mutableStateOf(1) }
+            val contactMethod = remember { mutableIntStateOf(2) }
+            val person = remember { mutableIntStateOf(1) }
 
             SampleTheme {
                 Scaffold(
@@ -43,7 +52,8 @@ class MainActivity : ComponentActivity() {
                             title = { Text(text = stringResource(id = R.string.app_name)) },
                             actions = { ActionMenu(items = buildToolbarActions(useLocation, contactMethod, person)) }
                         )
-                    }
+                    },
+                    containerColor = MaterialTheme.colorScheme.surfaceContainer
                 ) {
                     Column(
                         modifier = Modifier
@@ -54,9 +64,9 @@ class MainActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(8.dp))
                         Text("Use location (just some example text): ${useLocation.value}")
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text("Person selected: #${person.value}")
+                        Text("Person selected: #${person.intValue}")
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text("Contact method selected: #${contactMethod.value}")
+                        Text("Contact method selected: #${contactMethod.intValue}")
                     }
                 }
             }
@@ -81,13 +91,22 @@ class MainActivity : ComponentActivity() {
             iconVector = Icons.Default.Person,
             childOptions = listOf(
                 RadioActionItem(
-                    key = "radio1", title = stringResource(R.string.person_1), isSelected = personState.value == 1, onClick = { personState.value = 1 }
+                    key = "radio1",
+                    title = stringResource(R.string.person_1),
+                    isSelected = personState.value == 1,
+                    onClick = { personState.value = 1 }
                 ),
                 RadioActionItem(
-                    key = "radio2", title = stringResource(R.string.person_2), isSelected = personState.value == 2, onClick = { personState.value = 2 }
+                    key = "radio2",
+                    title = stringResource(R.string.person_2),
+                    isSelected = personState.value == 2,
+                    onClick = { personState.value = 2 }
                 ),
                 RadioActionItem(
-                    key = "radio3", title = stringResource(R.string.person_3), isSelected = personState.value == 3, onClick = { personState.value = 3 }
+                    key = "radio3",
+                    title = stringResource(R.string.person_3),
+                    isSelected = personState.value == 3,
+                    onClick = { personState.value = 3 }
                 ),
             )
         ),

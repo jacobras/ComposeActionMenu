@@ -1,10 +1,12 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
     namespace = "nl.jacobras.composeactionmenu.sample"
 
     buildFeatures {
@@ -20,13 +22,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
     defaultConfig {
         applicationId = "nl.jacobras.composeactionmenu"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -46,6 +45,6 @@ dependencies {
 
     implementation(libs.compose.activity)
     implementation(libs.compose.foundation)
-    implementation(libs.compose.material)
+    implementation(libs.compose.material3)
     implementation(libs.compose.ui)
 }

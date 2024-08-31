@@ -1,20 +1,21 @@
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
     kotlin("multiplatform")
-    id("org.jetbrains.compose")
-    id("com.android.library")
-    id("com.vanniktech.maven.publish") version "0.27.0"
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.maven.publish)
 }
 
 group = "nl.jacobras"
-version = "2.0.0"
+version = "3.0.0"
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01, true)
     signAllPublications()
 
-    @Suppress("UnstableApiUsage")
     pom {
         name.set("Compose Action Menu")
         description.set("An easy to use action/overflow menu for Jetpack Compose")
@@ -40,7 +41,7 @@ mavenPublishing {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
     namespace = "nl.jacobras.composeactionmenu"
 
     buildFeatures {
@@ -53,11 +54,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
 }
 
+@OptIn(ExperimentalWasmDsl::class)
 kotlin {
     applyDefaultHierarchyTemplate()
 
@@ -68,12 +67,14 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
     jvm("desktop")
+    js { browser() }
+    wasmJs { browser() }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(compose.foundation)
-                implementation(compose.material)
+                implementation(compose.material3)
                 implementation(compose.ui)
             }
         }

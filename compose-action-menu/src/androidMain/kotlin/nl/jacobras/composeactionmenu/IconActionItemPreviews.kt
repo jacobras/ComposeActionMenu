@@ -2,43 +2,91 @@ package nl.jacobras.composeactionmenu
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun RegularIconActionPreview() {
-    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = Icons.Filled.Search, onClick = {}))
+    IconActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface
+    )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun BlueIconActionPreview() {
-    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = Icons.Filled.Search, onClick = {}),
-        tint = Color.Blue)
+    IconActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface
+    )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun DisabledIconActionPreview() {
-    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = Icons.Filled.Search, enabled = false, onClick = {}))
+    IconActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
+            enabled = false,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface
+    )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun TextIconActionPreview() {
-    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = null, onClick = {}))
+    IconActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = null,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface
+    )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun BlueTextIconActionPreview() {
-    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = null, onClick = {}), tint = Color.Blue)
+    IconActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = null,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface
+    )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun DisabledTextIconActionPreview() {
-    IconActionItem(item = RegularActionItem(key = "search", title = "OK", iconVector = null, enabled = false, onClick = {}))
+    IconActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = null,
+            enabled = false,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface
+    )
 }
