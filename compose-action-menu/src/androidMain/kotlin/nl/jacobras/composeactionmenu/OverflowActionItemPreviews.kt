@@ -3,9 +3,8 @@ package nl.jacobras.composeactionmenu
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 
-@PreviewLightDark
+@PreviewUiComponent
 @Composable
 private fun RegularOverflowActionPreview() {
     OverflowActionItem(
@@ -19,7 +18,7 @@ private fun RegularOverflowActionPreview() {
     )
 }
 
-@PreviewLightDark
+@PreviewUiComponent
 @Composable
 private fun RegularOverflowActionWithoutIconPreview() {
     OverflowActionItem(
@@ -33,7 +32,7 @@ private fun RegularOverflowActionWithoutIconPreview() {
     )
 }
 
-@PreviewLightDark
+@PreviewUiComponent
 @Composable
 private fun DisabledOverflowActionWithoutIconPreview() {
     OverflowActionItem(
@@ -48,7 +47,7 @@ private fun DisabledOverflowActionWithoutIconPreview() {
     )
 }
 
-@PreviewLightDark
+@PreviewUiComponent
 @Composable
 private fun CheckableOverflowActionPreview() {
     OverflowActionItem(
@@ -63,7 +62,7 @@ private fun CheckableOverflowActionPreview() {
     )
 }
 
-@PreviewLightDark
+@PreviewUiComponent
 @Composable
 private fun RadioOverflowActionPreview() {
     OverflowActionItem(
@@ -78,7 +77,7 @@ private fun RadioOverflowActionPreview() {
     )
 }
 
-@PreviewLightDark
+@PreviewUiComponent
 @Composable
 private fun GroupOverflowActionPreview() {
     OverflowActionItem(

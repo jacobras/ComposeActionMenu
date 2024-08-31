@@ -3,9 +3,8 @@ package nl.jacobras.composeactionmenu
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun RegularIconActionPreview() {
     IconActionItem(
@@ -19,7 +18,7 @@ private fun RegularIconActionPreview() {
     )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun BlueIconActionPreview() {
     IconActionItem(
@@ -33,7 +32,7 @@ private fun BlueIconActionPreview() {
     )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun DisabledIconActionPreview() {
     IconActionItem(
@@ -48,7 +47,7 @@ private fun DisabledIconActionPreview() {
     )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun TextIconActionPreview() {
     IconActionItem(
@@ -62,7 +61,7 @@ private fun TextIconActionPreview() {
     )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun BlueTextIconActionPreview() {
     IconActionItem(
@@ -76,7 +75,7 @@ private fun BlueTextIconActionPreview() {
     )
 }
 
-@Preview
+@PreviewUiComponent
 @Composable
 private fun DisabledTextIconActionPreview() {
     IconActionItem(
