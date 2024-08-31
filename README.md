@@ -3,6 +3,8 @@
 ![Android](https://img.shields.io/badge/-android-6EDB8D.svg?style=flat)
 ![iOS](http://img.shields.io/badge/-ios-CDCDCD.svg?style=flat)
 ![JVM](https://img.shields.io/badge/-jvm-DB413D.svg?style=flat)
+![JS](http://img.shields.io/badge/-js-F8DB5D.svg?style=flat)
+![wasm](https://img.shields.io/badge/-wasm-624DE9.svg?style=flat)
 
 This multi-platform library provides an easy-to-use action menu for Compose, since Compose doesn't offer this by default.
 
