@@ -63,7 +63,7 @@ fun ActionMenu(
         key(item.key) {
             IconActionItem(
                 item = item,
-                colors = colors,
+                contentColor = colors.contentColor,
                 modifier = Modifier.testTag("ActionMenu#${item.key}"),
                 showSubMenu = { subMenuContent = it },
                 hideSubMenu = { subMenuContent = emptyList() }
@@ -87,7 +87,7 @@ fun ActionMenu(
     DropdownMenu(
         modifier = Modifier
             .width(240.dp)
-            .background(colors.dropdownContainerColor),
+            .background(colors.overflowContainerColor),
         offset = DpOffset(0.dp, (-10).dp),
         expanded = showOverflowMenu || subMenuContent.isNotEmpty(),
         onDismissRequest = { showOverflowMenu = false; subMenuContent = emptyList() }
@@ -98,7 +98,7 @@ fun ActionMenu(
             key(item.key) {
                 OverflowActionItem(
                     item = item,
-                    colors = colors,
+                    contentColor = colors.overflowContentColor,
                     modifier = Modifier.testTag("ActionMenu#${item.key}"),
                     hideTopMenu = { showOverflowMenu = false },
                     showSubMenu = { subMenuContent = it },

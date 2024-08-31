@@ -6,12 +6,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 
 @Composable
 internal fun IconActionItem(
     item: ActionItem,
-    colors: ActionMenuColors,
+    contentColor: Color,
     modifier: Modifier = Modifier,
     showSubMenu: (items: List<ActionItem>) -> Unit = {},
     hideSubMenu: () -> Unit = {}
@@ -47,11 +48,11 @@ internal fun IconActionItem(
 
     if (iconPainter != null) {
         IconButton(modifier = modifier, onClick = onClick, enabled = item.enabled) {
-            Icon(iconPainter, title, tint = colors.contentColor)
+            Icon(iconPainter, title, tint = contentColor)
         }
     } else {
         TextButton(modifier = modifier, onClick = onClick, enabled = item.enabled) {
-            Text(text = title, color = colors.contentColor)
+            Text(text = title, color = contentColor)
         }
     }
 }

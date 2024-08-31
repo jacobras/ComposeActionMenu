@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -22,7 +23,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 internal fun OverflowActionItem(
     item: ActionItem,
-    colors: ActionMenuColors,
+    contentColor: Color,
     modifier: Modifier = Modifier,
     hideTopMenu: () -> Unit = {},
     showSubMenu: (items: List<ActionItem>) -> Unit = {},
@@ -71,7 +72,7 @@ internal fun OverflowActionItem(
                     Icon(
                         painter = iconPainter,
                         contentDescription = null,
-                        tint = colors.contentColor
+                        tint = contentColor
                     )
                 }
                 Spacer(modifier = Modifier.width(8.dp))
@@ -82,7 +83,7 @@ internal fun OverflowActionItem(
                         .weight(1f)
                         .padding(end = 8.dp),
                     text = item.title,
-                    color = colors.contentColor.copy(alpha = textAlpha),
+                    color = contentColor.copy(alpha = textAlpha),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -102,7 +103,7 @@ internal fun OverflowActionItem(
                         Icon(
                             painter = rememberVectorPainter(Icons.AutoMirrored.Filled.KeyboardArrowRight),
                             contentDescription = null,
-                            tint = colors.contentColor
+                            tint = contentColor
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                     }

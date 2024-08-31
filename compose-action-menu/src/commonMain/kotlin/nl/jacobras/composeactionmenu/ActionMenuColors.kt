@@ -8,7 +8,8 @@ import androidx.compose.ui.graphics.Color
 @Immutable
 data class ActionMenuColors(
     val contentColor: Color,
-    val dropdownContainerColor: Color
+    val overflowContainerColor: Color,
+    val overflowContentColor: Color
 )
 
 object ActionMenuDefaults {
@@ -16,9 +17,11 @@ object ActionMenuDefaults {
     @Composable
     fun colors(
         contentColor: Color = MaterialTheme.colorScheme.onSurface,
-        dropdownContainerColor: Color = MaterialTheme.colorScheme.surfaceContainer
+        overflowContainerColor: Color = MaterialTheme.colorScheme.surfaceContainer,
+        overflowContentColor: Color = MaterialTheme.colorScheme.onSurface,
     ) = ActionMenuColors(
         contentColor = contentColor,
-        dropdownContainerColor = dropdownContainerColor
+        overflowContainerColor = overflowContainerColor,
+        overflowContentColor = overflowContentColor
     )
 }

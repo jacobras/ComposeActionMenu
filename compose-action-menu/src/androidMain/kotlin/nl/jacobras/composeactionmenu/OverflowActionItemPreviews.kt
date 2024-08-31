@@ -2,6 +2,7 @@ package nl.jacobras.composeactionmenu
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 
 @PreviewUiComponent
@@ -14,7 +15,7 @@ private fun RegularOverflowActionPreview() {
             iconVector = Icons.Filled.Search,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -28,7 +29,7 @@ private fun RegularOverflowActionWithoutIconPreview() {
             iconVector = null,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -43,7 +44,7 @@ private fun DisabledOverflowActionWithoutIconPreview() {
             enabled = false,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -58,7 +59,7 @@ private fun CheckableOverflowActionPreview() {
             isChecked = true,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -73,7 +74,7 @@ private fun RadioOverflowActionPreview() {
             isSelected = true,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -87,6 +88,6 @@ private fun GroupOverflowActionPreview() {
             iconVector = Icons.Filled.Search,
             childOptions = emptyList()
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }

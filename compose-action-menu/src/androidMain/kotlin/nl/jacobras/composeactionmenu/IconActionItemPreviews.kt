@@ -2,6 +2,7 @@ package nl.jacobras.composeactionmenu
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 
 @PreviewUiComponent
@@ -14,7 +15,7 @@ private fun RegularIconActionPreview() {
             iconVector = Icons.Filled.Search,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -28,7 +29,7 @@ private fun BlueIconActionPreview() {
             iconVector = Icons.Filled.Search,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -43,7 +44,7 @@ private fun DisabledIconActionPreview() {
             enabled = false,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -57,7 +58,7 @@ private fun TextIconActionPreview() {
             iconVector = null,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -71,7 +72,7 @@ private fun BlueTextIconActionPreview() {
             iconVector = null,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
 
@@ -86,6 +87,6 @@ private fun DisabledTextIconActionPreview() {
             enabled = false,
             onClick = {}
         ),
-        colors = ActionMenuDefaults.colors()
+        contentColor = MaterialTheme.colorScheme.onSurface
     )
 }
