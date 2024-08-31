@@ -23,6 +23,8 @@ This multi-platform library provides an easy-to-use action menu for Compose, sin
 
 ![Animated preview image](preview.gif)
 
+A web demo is available at https://jacobras.github.io/ComposeActionMenu/.
+
 # Installation
 
 ```kotlin
