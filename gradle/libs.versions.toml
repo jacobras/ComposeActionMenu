@@ -5,7 +5,7 @@ compose-multiplatform = "1.6.11"
 kotlin = "2.0.20"
 
 [libraries]
-compose-activity = { group = "androidx.activity", name = "activity-compose", version = "1.9.1" }
+compose-activity = { group = "androidx.activity", name = "activity-compose", version = "1.9.2" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
