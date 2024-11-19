@@ -1,11 +1,11 @@
 [versions]
 agp = "8.2.2"
-compose-bom = "2024.08.00"
-compose-multiplatform = "1.6.11"
-kotlin = "2.0.20"
+compose-bom = "2024.11.00"
+compose-multiplatform = "1.7.1"
+kotlin = "2.0.21"
 
 [libraries]
-compose-activity = { group = "androidx.activity", name = "activity-compose", version = "1.9.1" }
+compose-activity = { group = "androidx.activity", name = "activity-compose", version = "1.9.3" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
@@ -18,4 +18,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.29.0" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.30.0" }
