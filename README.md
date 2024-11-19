@@ -29,7 +29,7 @@ A web demo is available at https://jacobras.github.io/ComposeActionMenu/.
 
 ```kotlin
 dependencies {
-    implementation("nl.jacobras:compose-action-menu:3.0.0")
+    implementation("nl.jacobras:compose-action-menu:3.0.1")
 }
 ```
 
