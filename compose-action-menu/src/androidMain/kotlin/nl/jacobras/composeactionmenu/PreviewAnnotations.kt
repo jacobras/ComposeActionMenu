@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
  */
 @PreviewLargeFonts
 @PreviewThemes
-annotation class PreviewUiComponent
+internal annotation class PreviewUiComponent
 
 @Preview(
     name = "150%",
@@ -23,7 +23,7 @@ annotation class PreviewUiComponent
     showBackground = true,
     backgroundColor = 0xfff
 )
-annotation class PreviewLargeFonts
+internal annotation class PreviewLargeFonts
 
 @Preview(
     name = "Light",
@@ -36,4 +36,4 @@ annotation class PreviewLargeFonts
     backgroundColor = 0x000,
     uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL
 )
-annotation class PreviewThemes
+internal annotation class PreviewThemes
