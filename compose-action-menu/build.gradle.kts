@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.maven.publish)
+    signing
 }
 
 group = "nl.jacobras"
@@ -91,4 +92,10 @@ kotlin {
 tasks.withType<AbstractPublishToMaven>().configureEach {
     val signingTasks = tasks.withType<Sign>()
     mustRunAfter(signingTasks)
+}
+
+signing {
+    setRequired {
+        !gradle.taskGraph.allTasks.any { it is PublishToMavenLocal }
+    }
 }
