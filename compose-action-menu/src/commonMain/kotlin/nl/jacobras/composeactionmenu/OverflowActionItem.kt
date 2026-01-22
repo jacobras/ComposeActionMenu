@@ -77,12 +77,13 @@ internal fun OverflowActionItem(
                 }
                 val textAlpha = if (item.enabled) 1.0f else 0.5f
                 if (iconPainter != null) {
+                    Spacer(modifier = Modifier.width(2.dp))
                     Icon(
                         painter = iconPainter,
                         contentDescription = null,
                         tint = contentColor.copy(textAlpha)
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
                 } else if (addPaddingIfNoIcon) {
                     Spacer(modifier = Modifier.width(32.dp))
                 }
