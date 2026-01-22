@@ -1,5 +1,6 @@
 package nl.jacobras.composeactionmenu
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -7,9 +8,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,10 +23,14 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
+/**
+ * An action item for use in the overflow menu.
+ */
 @Composable
 internal fun OverflowActionItem(
     item: ActionItem,
     contentColor: Color,
+    addPaddingIfNoIcon: Boolean,
     modifier: Modifier = Modifier,
     hideTopMenu: () -> Unit = {},
     showSubMenu: (items: List<ActionItem>) -> Unit = {},
@@ -68,16 +75,19 @@ internal fun OverflowActionItem(
                     item.icon != null -> item.icon
                     else -> null
                 }
+                val textAlpha = if (item.enabled) 1.0f else 0.5f
                 if (iconPainter != null) {
+                    Spacer(modifier = Modifier.width(2.dp))
                     Icon(
                         painter = iconPainter,
                         contentDescription = null,
-                        tint = contentColor
+                        tint = contentColor.copy(textAlpha)
                     )
+                    Spacer(modifier = Modifier.width(6.dp))
+                } else if (addPaddingIfNoIcon) {
+                    Spacer(modifier = Modifier.width(32.dp))
                 }
-                Spacer(modifier = Modifier.width(8.dp))
 
-                val textAlpha = if (item.enabled) 1.0f else 0.5f
                 Text(
                     modifier = Modifier
                         .weight(1f)
@@ -112,5 +122,141 @@ internal fun OverflowActionItem(
                 }
             }
         }
+    )
+}
+
+@PreviewUiComponent
+@Composable
+private fun RegularOverflowActionItemPreview() {
+    OverflowActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
+    )
+}
+
+@PreviewUiComponent
+@Composable
+private fun RegularOverflowActionItemWithoutIconPreview() {
+    OverflowActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = null,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
+    )
+}
+
+@PreviewUiComponent
+@Composable
+private fun OverflowActionItemWithPadding() {
+    Column {
+        OverflowActionItem(
+            item = RegularActionItem(
+                key = "search",
+                title = "OK",
+                iconVector = Icons.Filled.Search,
+                onClick = {}
+            ),
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            addPaddingIfNoIcon = true
+        )
+        OverflowActionItem(
+            item = RegularActionItem(
+                key = "somethingElse",
+                title = "Something else",
+                iconVector = null,
+                onClick = {}
+            ),
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            addPaddingIfNoIcon = true
+        )
+    }
+}
+
+@PreviewUiComponent
+@Composable
+private fun DisabledOverflowActionItemWithoutIconPreview() {
+    OverflowActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = null,
+            enabled = false,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
+    )
+}
+
+@PreviewUiComponent
+@Composable
+private fun DisabledOverflowActionItemWithIconPreview() {
+    OverflowActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
+            enabled = false,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
+    )
+}
+
+@PreviewUiComponent
+@Composable
+private fun CheckableOverflowActionItemPreview() {
+    OverflowActionItem(
+        item = CheckableActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
+            isChecked = true,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
+    )
+}
+
+@PreviewUiComponent
+@Composable
+private fun RadioOverflowActionItemPreview() {
+    OverflowActionItem(
+        item = RadioActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
+            isSelected = true,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
+    )
+}
+
+@PreviewUiComponent
+@Composable
+private fun GroupOverflowActionItemPreview() {
+    OverflowActionItem(
+        item = GroupActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
+            childOptions = emptyList()
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
     )
 }

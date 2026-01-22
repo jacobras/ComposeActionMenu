@@ -9,7 +9,7 @@
     <string name="contact_1">Phone</string>
     <string name="contact_2">E-mail</string>
     <string name="contact_3">Post</string>
-    <string name="use_location">Use location</string>
+    <string name="sample_checkbox">Sample checkbox</string>
     <string name="settings">Settings</string>
     <string name="disabled_example">Disabled example</string>
 </resources>

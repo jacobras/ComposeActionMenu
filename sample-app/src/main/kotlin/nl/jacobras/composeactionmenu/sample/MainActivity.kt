@@ -9,10 +9,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val useLocation = remember { mutableStateOf(false) }
+            val sampleCheckbox = remember { mutableStateOf(false) }
             val contactMethod = remember { mutableIntStateOf(2) }
             val person = remember { mutableIntStateOf(1) }
 
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = { Text(text = stringResource(id = R.string.app_name)) },
-                            actions = { ActionMenu(items = buildToolbarActions(useLocation, contactMethod, person)) }
+                            actions = { ActionMenu(items = buildToolbarActions(sampleCheckbox, contactMethod, person)) }
                         )
                     },
                     containerColor = MaterialTheme.colorScheme.surfaceContainer
@@ -62,7 +63,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         Text("Welcome to the sample app! Try out the menu options above.")
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text("Use location (just some example text): ${useLocation.value}")
+                        Text("Sample checkbox: ${sampleCheckbox.value}")
                         Spacer(modifier = Modifier.height(8.dp))
                         Text("Person selected: #${person.intValue}")
                         Spacer(modifier = Modifier.height(8.dp))
@@ -112,8 +113,8 @@ class MainActivity : ComponentActivity() {
         ),
         CheckableActionItem(
             key = "useLocation",
-            title = stringResource(R.string.use_location),
-            iconVector = Icons.Default.LocationOn,
+            title = stringResource(R.string.sample_checkbox),
+            iconVector = Icons.Default.AccountBox,
             isChecked = useLocationState.value,
             onClick = { useLocationState.value = !useLocationState.value }
         ),
@@ -147,6 +148,7 @@ class MainActivity : ComponentActivity() {
         RegularActionItem(
             key = "disabledExample",
             title = stringResource(R.string.disabled_example),
+            iconVector = Icons.Default.Create,
             showAsAction = ShowAsActionMode.NEVER,
             enabled = false,
             onClick = ::onActionItemClick

@@ -1,4 +1,4 @@
-import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
@@ -7,13 +7,14 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.maven.publish)
+    signing
 }
 
 group = "nl.jacobras"
 version = "3.1.0"
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.S01, true)
+    publishToMavenCentral()
     signAllPublications()
 
     pom {
@@ -71,26 +72,30 @@ kotlin {
     wasmJs { browser() }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(libs.compose.foundation)
-                implementation(libs.compose.icons)
-                implementation(libs.compose.material3)
-                implementation(libs.compose.ui)
-            }
+        commonMain.dependencies {
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.icons)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.uiToolingPreview)
         }
-        val androidMain by getting {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        invokeWhenCreated("androidDebug") {
             dependencies {
-                implementation(compose.uiTooling)
+                implementation(libs.compose.uiTooling)
             }
         }
     }
-
-    jvmToolchain(17)
 }
 
 // From https://github.com/gradle/gradle/issues/26091#issuecomment-1722947958
 tasks.withType<AbstractPublishToMaven>().configureEach {
     val signingTasks = tasks.withType<Sign>()
     mustRunAfter(signingTasks)
+}
+
+signing {
+    setRequired {
+        !gradle.taskGraph.allTasks.any { it is PublishToMavenLocal }
+    }
 }
