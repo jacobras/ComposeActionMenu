@@ -14,7 +14,6 @@ import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -149,6 +148,7 @@ class MainActivity : ComponentActivity() {
         RegularActionItem(
             key = "disabledExample",
             title = stringResource(R.string.disabled_example),
+            iconVector = Icons.Default.Create,
             showAsAction = ShowAsActionMode.NEVER,
             enabled = false,
             onClick = ::onActionItemClick

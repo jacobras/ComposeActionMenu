@@ -75,18 +75,18 @@ internal fun OverflowActionItem(
                     item.icon != null -> item.icon
                     else -> null
                 }
+                val textAlpha = if (item.enabled) 1.0f else 0.5f
                 if (iconPainter != null) {
                     Icon(
                         painter = iconPainter,
                         contentDescription = null,
-                        tint = contentColor
+                        tint = contentColor.copy(textAlpha)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                 } else if (addPaddingIfNoIcon) {
                     Spacer(modifier = Modifier.width(32.dp))
                 }
 
-                val textAlpha = if (item.enabled) 1.0f else 0.5f
                 Text(
                     modifier = Modifier
                         .weight(1f)
@@ -189,6 +189,22 @@ private fun DisabledOverflowActionItemWithoutIconPreview() {
             key = "search",
             title = "OK",
             iconVector = null,
+            enabled = false,
+            onClick = {}
+        ),
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
+    )
+}
+
+@PreviewUiComponent
+@Composable
+private fun DisabledOverflowActionItemWithIconPreview() {
+    OverflowActionItem(
+        item = RegularActionItem(
+            key = "search",
+            title = "OK",
+            iconVector = Icons.Filled.Search,
             enabled = false,
             onClick = {}
         ),
