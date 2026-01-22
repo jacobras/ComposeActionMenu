@@ -42,14 +42,12 @@ kotlin {
 }
 
 dependencies {
-    // BoMs
-    implementation(platform(libs.compose.bom))
-
     // The actual library
     implementation(project(":compose-action-menu"))
 
     implementation(libs.compose.activity)
     implementation(libs.compose.foundation)
+    implementation(libs.compose.icons)
     implementation(libs.compose.material3)
     implementation(libs.compose.ui)
 }

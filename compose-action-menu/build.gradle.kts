@@ -73,9 +73,10 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.ui)
+                implementation(libs.compose.foundation)
+                implementation(libs.compose.icons)
+                implementation(libs.compose.material3)
+                implementation(libs.compose.ui)
             }
         }
         val androidMain by getting {
