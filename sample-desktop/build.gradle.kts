@@ -7,13 +7,12 @@ plugins {
 }
 
 kotlin {
-    jvm {
-        withJava()
-    }
+    jvm()
     sourceSets {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation(libs.compose.icons)
                 implementation(project(":compose-action-menu"))
             }
         }

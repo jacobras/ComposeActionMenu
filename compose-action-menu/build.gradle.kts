@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "nl.jacobras"
-version = "3.0.1"
+version = "3.1.0"
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01, true)
@@ -41,14 +41,14 @@ mavenPublishing {
 }
 
 android {
-    compileSdk = 35
+    compileSdk = 36
     namespace = "nl.jacobras.composeactionmenu"
 
     buildFeatures {
         compose = true
     }
     defaultConfig {
-        minSdk = 21
+        minSdk = 23
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -73,9 +73,10 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.ui)
+                implementation(libs.compose.foundation)
+                implementation(libs.compose.icons)
+                implementation(libs.compose.material3)
+                implementation(libs.compose.ui)
             }
         }
         val androidMain by getting {

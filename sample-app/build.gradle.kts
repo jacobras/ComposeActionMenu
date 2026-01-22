@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     kotlin("android")
     alias(libs.plugins.android.application)
@@ -6,7 +8,7 @@ plugins {
 }
 
 android {
-    compileSdk = 35
+    compileSdk = 36
     namespace = "nl.jacobras.composeactionmenu.sample"
 
     buildFeatures {
@@ -19,32 +21,33 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     defaultConfig {
         applicationId = "nl.jacobras.composeactionmenu"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)
     }
 }
 
 dependencies {
-    // BoMs
-    implementation(platform(libs.compose.bom))
-
     // The actual library
     implementation(project(":compose-action-menu"))
 
     implementation(libs.compose.activity)
     implementation(libs.compose.foundation)
+    implementation(libs.compose.icons)
     implementation(libs.compose.material3)
     implementation(libs.compose.ui)
 }
