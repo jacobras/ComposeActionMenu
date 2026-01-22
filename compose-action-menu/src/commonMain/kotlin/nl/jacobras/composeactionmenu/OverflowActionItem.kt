@@ -1,5 +1,6 @@
 package nl.jacobras.composeactionmenu
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,10 +23,14 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
+/**
+ * An action item for use in the overflow menu.
+ */
 @Composable
 internal fun OverflowActionItem(
     item: ActionItem,
     contentColor: Color,
+    addPaddingIfNoIcon: Boolean,
     modifier: Modifier = Modifier,
     hideTopMenu: () -> Unit = {},
     showSubMenu: (items: List<ActionItem>) -> Unit = {},
@@ -76,8 +81,10 @@ internal fun OverflowActionItem(
                         contentDescription = null,
                         tint = contentColor
                     )
+                    Spacer(modifier = Modifier.width(8.dp))
+                } else if (addPaddingIfNoIcon) {
+                    Spacer(modifier = Modifier.width(32.dp))
                 }
-                Spacer(modifier = Modifier.width(8.dp))
 
                 val textAlpha = if (item.enabled) 1.0f else 0.5f
                 Text(
@@ -119,7 +126,7 @@ internal fun OverflowActionItem(
 
 @PreviewUiComponent
 @Composable
-private fun RegularOverflowActionPreview() {
+private fun RegularOverflowActionItemPreview() {
     OverflowActionItem(
         item = RegularActionItem(
             key = "search",
@@ -127,13 +134,14 @@ private fun RegularOverflowActionPreview() {
             iconVector = Icons.Filled.Search,
             onClick = {}
         ),
-        contentColor = MaterialTheme.colorScheme.onSurface
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
     )
 }
 
 @PreviewUiComponent
 @Composable
-private fun RegularOverflowActionWithoutIconPreview() {
+private fun RegularOverflowActionItemWithoutIconPreview() {
     OverflowActionItem(
         item = RegularActionItem(
             key = "search",
@@ -141,13 +149,41 @@ private fun RegularOverflowActionWithoutIconPreview() {
             iconVector = null,
             onClick = {}
         ),
-        contentColor = MaterialTheme.colorScheme.onSurface
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
     )
 }
 
 @PreviewUiComponent
 @Composable
-private fun DisabledOverflowActionWithoutIconPreview() {
+private fun OverflowActionItemWithPadding() {
+    Column {
+        OverflowActionItem(
+            item = RegularActionItem(
+                key = "search",
+                title = "OK",
+                iconVector = Icons.Filled.Search,
+                onClick = {}
+            ),
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            addPaddingIfNoIcon = true
+        )
+        OverflowActionItem(
+            item = RegularActionItem(
+                key = "somethingElse",
+                title = "Something else",
+                iconVector = null,
+                onClick = {}
+            ),
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            addPaddingIfNoIcon = true
+        )
+    }
+}
+
+@PreviewUiComponent
+@Composable
+private fun DisabledOverflowActionItemWithoutIconPreview() {
     OverflowActionItem(
         item = RegularActionItem(
             key = "search",
@@ -156,13 +192,14 @@ private fun DisabledOverflowActionWithoutIconPreview() {
             enabled = false,
             onClick = {}
         ),
-        contentColor = MaterialTheme.colorScheme.onSurface
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
     )
 }
 
 @PreviewUiComponent
 @Composable
-private fun CheckableOverflowActionPreview() {
+private fun CheckableOverflowActionItemPreview() {
     OverflowActionItem(
         item = CheckableActionItem(
             key = "search",
@@ -171,13 +208,14 @@ private fun CheckableOverflowActionPreview() {
             isChecked = true,
             onClick = {}
         ),
-        contentColor = MaterialTheme.colorScheme.onSurface
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
     )
 }
 
 @PreviewUiComponent
 @Composable
-private fun RadioOverflowActionPreview() {
+private fun RadioOverflowActionItemPreview() {
     OverflowActionItem(
         item = RadioActionItem(
             key = "search",
@@ -186,13 +224,14 @@ private fun RadioOverflowActionPreview() {
             isSelected = true,
             onClick = {}
         ),
-        contentColor = MaterialTheme.colorScheme.onSurface
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
     )
 }
 
 @PreviewUiComponent
 @Composable
-private fun GroupOverflowActionPreview() {
+private fun GroupOverflowActionItemPreview() {
     OverflowActionItem(
         item = GroupActionItem(
             key = "search",
@@ -200,6 +239,7 @@ private fun GroupOverflowActionPreview() {
             iconVector = Icons.Filled.Search,
             childOptions = emptyList()
         ),
-        contentColor = MaterialTheme.colorScheme.onSurface
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        addPaddingIfNoIcon = false
     )
 }

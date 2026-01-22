@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
@@ -13,7 +12,7 @@ group = "nl.jacobras"
 version = "3.1.0"
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.S01, true)
+    publishToMavenCentral()
     signAllPublications()
 
     pom {
@@ -71,19 +70,15 @@ kotlin {
     wasmJs { browser() }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(libs.compose.foundation)
-                implementation(libs.compose.icons)
-                implementation(libs.compose.material3)
-                implementation(libs.compose.ui)
-                implementation(libs.compose.uiTooling)
-                implementation(libs.compose.uiToolingPreview)
-            }
+        commonMain.dependencies {
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.icons)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.uiTooling)
+            implementation(libs.compose.uiToolingPreview)
         }
     }
-
-    jvmToolchain(17)
 }
 
 // From https://github.com/gradle/gradle/issues/26091#issuecomment-1722947958

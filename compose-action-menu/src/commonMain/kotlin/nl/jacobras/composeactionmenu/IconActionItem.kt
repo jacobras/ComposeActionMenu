@@ -12,6 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 
+/**
+ * An action item that shows an icon (or text when no icon is provided) for use in a toolbar.
+ */
 @Composable
 internal fun IconActionItem(
     item: ActionItem,

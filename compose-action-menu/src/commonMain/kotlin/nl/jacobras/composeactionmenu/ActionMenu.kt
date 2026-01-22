@@ -102,7 +102,8 @@ fun ActionMenu(
                     modifier = Modifier.testTag("ActionMenu#${item.key}"),
                     hideTopMenu = { showOverflowMenu = false },
                     showSubMenu = { subMenuContent = it },
-                    hideSubMenu = { subMenuContent = emptyList() }
+                    hideSubMenu = { subMenuContent = emptyList() },
+                    addPaddingIfNoIcon = content.any { it.icon != null || it.iconVector != null }
                 )
             }
         }
