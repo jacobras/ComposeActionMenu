@@ -77,11 +77,8 @@ kotlin {
                 implementation(libs.compose.icons)
                 implementation(libs.compose.material3)
                 implementation(libs.compose.ui)
-            }
-        }
-        val androidMain by getting {
-            dependencies {
-                implementation(compose.uiTooling)
+                implementation(libs.compose.uiTooling)
+                implementation(libs.compose.uiToolingPreview)
             }
         }
     }
