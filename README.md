@@ -29,7 +29,7 @@ A web demo is available at https://jacobras.github.io/ComposeActionMenu/.
 
 ```kotlin
 dependencies {
-    implementation("nl.jacobras:compose-action-menu:3.0.1")
+    implementation("nl.jacobras:compose-action-menu:3.1.0")
 }
 ```
 
@@ -102,12 +102,17 @@ Each version depends on specific Compose dependencies.
 
 <table>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/mavencentral-v3.0.0-blue">
+  <td><img alt="Maven Central" src="https://img.shields.io/badge/mavencentral-v3.1.0-blue">
+  </td><td>Compose Multiplatform 1.10.1</td>
+  <td>Material 3</td>
+ </tr>
+ <tr>
+  <td><img alt="Maven Central" src="https://img.shields.io/badge/mavencentral-v3.0.0-blue">
   </td><td>Compose Multiplatform 1.6.11</td>
   <td>Material 3</td>
  </tr>
  <tr>
-  <td><img alt="JitPack" src="https://img.shields.io/badge/mavencentral-v2.0.0-blue">
+  <td><img alt="Maven Central" src="https://img.shields.io/badge/mavencentral-v2.0.0-blue">
   </td><td>Compose Multiplatform 1.5.1</td>
   <td>Material 2</td>
  </tr>
