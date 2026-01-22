@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
@@ -75,8 +76,13 @@ kotlin {
             implementation(libs.compose.icons)
             implementation(libs.compose.material3)
             implementation(libs.compose.ui)
-            implementation(libs.compose.uiTooling)
             implementation(libs.compose.uiToolingPreview)
+        }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        invokeWhenCreated("androidDebug") {
+            dependencies {
+                implementation(libs.compose.uiTooling)
+            }
         }
     }
 }
