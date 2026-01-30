@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("multiplatform")
@@ -11,7 +12,7 @@ plugins {
 }
 
 group = "nl.jacobras"
-version = "3.1.0"
+version = "3.1.1"
 
 mavenPublishing {
     publishToMavenCentral()
@@ -63,11 +64,19 @@ kotlin {
 
     androidTarget {
         publishLibraryVariants("release")
+
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
     }
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-    jvm("desktop")
+    jvm("desktop") {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
+    }
     js { browser() }
     wasmJs { browser() }
 

@@ -8,7 +8,7 @@ runs:
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: 24 # Can't upgrade to 25 before Detekt 2.0 is out.
+        java-version: 23 # Can't upgrade to 25 before Detekt 2.0 is out.
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
